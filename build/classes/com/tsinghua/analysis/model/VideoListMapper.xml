@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tsinghua.analysis.dao.IVideoListDao">
+	<resultMap id="BaseResultMap" type="com.tsinghua.analysis.model.VideoList">
+		<id column="VIDEO_ID" property="videoId" jdbcType="DECIMAL" />
+		<result column="VIDEO_NAME" property="videoName" jdbcType="VARCHAR" />
+		<result column="UPDATE_DATE" property="updateDate" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		VIDEO_ID,VIDEO_NAME,UPDATE_DATE
+	</sql>
+	<insert id="insert" parameterType="com.tsinghua.analysis.model.VideoList">
+		<selectKey keyProperty="videoId" order="BEFORE" resultType="DECIMAL">
+			select videoList_seq.nextval from dual
+		</selectKey>
+		insert into videoList
+		(VIDEO_ID,VIDEO_NAME,UPDATE_DATE) values
+		#{videoName,jdbcType=VARCHAR},
+		#{updateDate,jdbcType=VARCHAR})
+	</insert>
+	<select id="getAllVideoName" parameterType="java.lang.String"
+		resultType="String">
+		select VIDEO_NAME from videoList
+	</select>
+</mapper>
