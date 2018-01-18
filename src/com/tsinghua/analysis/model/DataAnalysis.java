@@ -285,8 +285,8 @@ public class DataAnalysis {
 	/*用户对预测分数的建议*/
 	private String scoreSuggest;
 	
-	/*是否在历史记录展示*/
-	private Boolean display;
+	/* 是否在历史记录展示,0否,1是 */
+	private String display;
 
 	public String getDaId() {
 		return daId;
@@ -1024,11 +1024,11 @@ public class DataAnalysis {
 		this.scoreSuggest = scoreSuggest;
 	}
 
-	public Boolean getDisplay() {
+	public String getDisplay() {
 		return display;
 	}
 
-	public void setDisplay(Boolean display) {
+	public void setDisplay(String display) {
 		this.display = display;
 	}
 }

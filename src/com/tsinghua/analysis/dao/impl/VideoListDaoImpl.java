@@ -17,8 +17,7 @@ public class VideoListDaoImpl implements IVideoListDao{
 	
 	@Override
 	public int insert(VideoList record) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSessionTemplate.getMapper(IVideoListDao.class).insert(record);
 	}
 
 	@Override

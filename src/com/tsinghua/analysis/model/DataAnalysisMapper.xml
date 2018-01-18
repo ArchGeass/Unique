@@ -1,2 +1,296 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tsinghua.analysis.dao.IDataAnalysisDao">
+	<resultMap id="BaseResultMap" type="com.tsinghua.analysis.model.DataAnalysis">
+		<id column="DA_ID" property="daId" jdbcType="DECIMAL" />
+		<result column="SCREEN_RESOLUTION_LONG" property="screenResolutionLong"
+			jdbcType="VARCHAR" />
+		<result column="SCREEN_RESOLUTION_WIDTH" property="screenResolutionWidth"
+			jdbcType="VARCHAR" />
+		<result column="VIDEO_CLARITY" property="videoClarity"
+			jdbcType="VARCHAR" />
+		<result column="VIDEO_CODING_FORMAT" property="videoCodingFormat"
+			jdbcType="VARCHAR" />
+		<result column="VIDEO_BITRATE" property="videoBitrate"
+			jdbcType="VARCHAR" />
+		<result column="BUFFERING_DELAY" property="bufferingDelay"
+			jdbcType="VARCHAR" />
+		<result column="VIDEO_PEAK_RATE" property="videoPeakRate"
+			jdbcType="VARCHAR" />
+		<result column="VIDEO_KA_NUM" property="videoKaNum" jdbcType="VARCHAR" />
+		<result column="VIDEO_KA_TOTAL_TIME" property="videoKaTotalTime"
+			jdbcType="VARCHAR" />
+		<result column="KA_DURATION_PROPORTION" property="kaDurationProportion"
+			jdbcType="VARCHAR" />
+		<result column="KA_DURATION_LONG_ONE" property="kaDurationLongOne"
+			jdbcType="VARCHAR" />
+		<result column="KA_DURATION_LONG_POINT_ONE" property="kaDurationLongPointOne"
+			jdbcType="VARCHAR" />
+		<result column="KA_DURATION_LONG_TWO" property="kaDurationLongTwo"
+			jdbcType="VARCHAR" />
+		<result column="KA_DURATION_LONG_POINT_TWO" property="kaDurationLongPointTwo"
+			jdbcType="VARCHAR" />
+		<result column="KA_DURATION_LONG_THREE" property="kaDurationLongThree"
+			jdbcType="VARCHAR" />
+		<result column="KA_DURATION_LONG_POINT_THREE" property="kaDurationLongPointThree"
+			jdbcType="VARCHAR" />
+		<result column="KA_DURATION_LONG_FOUR" property="kaDurationLongFour"
+			jdbcType="VARCHAR" />
+		<result column="KA_DURATION_LONG_POINT_FOUR" property="kaDurationLongPointFour"
+			jdbcType="VARCHAR" />
+		<result column="KA_DURATION_LONG_FIVE" property="kaDurationLongFive"
+			jdbcType="VARCHAR" />
+		<result column="KA_DURATION_LONG_POINT_FIVE" property="kaDurationLongPointFive"
+			jdbcType="VARCHAR" />
+		<result column="KA_DURATION_LONG_SIX" property="kaDurationLongSix"
+			jdbcType="VARCHAR" />
+		<result column="KA_DURATION_LONG_POINT_SIX" property="kaDurationLongPointSix"
+			jdbcType="VARCHAR" />
+		<result column="KA_DURATION_LONG_SEVEN" property="kaDurationLongSeven"
+			jdbcType="VARCHAR" />
+		<result column="KA_DURATION_LONG_POINT_SEVEN" property="kaDurationLongPointSeven"
+			jdbcType="VARCHAR" />
+		<result column="KA_DURATION_LONG_EIGHT" property="kaDurationLongEight"
+			jdbcType="VARCHAR" />
+		<result column="KA_DURATION_LONG_POINT_EIGHT" property="kaDurationLongPointEight"
+			jdbcType="VARCHAR" />
+		<result column="KA_DURATION_LONG_NINE" property="kaDurationLongNine"
+			jdbcType="VARCHAR" />
+		<result column="KA_DURATION_LONG_POINT_NINE" property="kaDurationLongPointNine"
+			jdbcType="VARCHAR" />
+		<result column="KA_DURATION_LONG_TEN" property="kaDurationLongTen"
+			jdbcType="VARCHAR" />
+		<result column="KA_DURATION_LONG_POINT_TEN" property="kaDurationLongPointTen"
+			jdbcType="VARCHAR" />
+		<result column="VIDEO_TOTAL_TIME" property="videoTotalTime"
+			jdbcType="VARCHAR" />
+		<result column="VIDEO_PLAY_TOTAL_TIME" property="videoPlayTotalTime"
+			jdbcType="VARCHAR" />
+		<result column="VIDEO_ALL_PEAK_RATE" property="videoAllPeakRate"
+			jdbcType="VARCHAR" />
+		<result column="VIDEO_AVERAGE_PEAK_RATE" property="videoAveragePeakRate"
+			jdbcType="VARCHAR" />
+		<result column="LIGHT_INTENSITY" property="lightIntensity"
+			jdbcType="VARCHAR" />
+		<result column="PHONE_SCREEN_BRIGHTNESS" property="phoneScreenBrightness"
+			jdbcType="VARCHAR" />
+		<result column="PHONE_PLACE_STATE" property="phonePlaceState"
+			jdbcType="VARCHAR" />
+		<result column="ENVIRONMENTAL_NOISE" property="environmentalNoise"
+			jdbcType="VARCHAR" />
+		<result column="NETWORK_TYPE" property="networkType" jdbcType="VARCHAR" />
+		<result column="PHONE_ELECTRIC_START" property="phoneElectricStart"
+			jdbcType="VARCHAR" />
+		<result column="PHONE_ELECTRIC_END" property="phoneElectricEnd"
+			jdbcType="VARCHAR" />
+		<result column="SIGNAL_STRENGTH" property="signalStrength"
+			jdbcType="VARCHAR" />
+		<result column="PHONE_VERSION" property="phoneVersion"
+			jdbcType="VARCHAR" />
+		<result column="OPERATING_SYSTEM" property="operatingSystem"
+			jdbcType="VARCHAR" />
+		<result column="GPS_LONGITUDE_ONE" property="gpsLongitudeOne"
+			jdbcType="VARCHAR" />
+		<result column="GPS_LATITUDE_ONE" property="gpsLatitudeOne"
+			jdbcType="VARCHAR" />
+		<result column="GPS_LONGITUDE_TWO" property="gpsLongitudeTwo"
+			jdbcType="VARCHAR" />
+		<result column="GPS_LATITUDE_TWO" property="gpsLatitudeTwo"
+			jdbcType="VARCHAR" />
+		<result column="GPS_LONGITUDE_THREE" property="gpsLongitudeThree"
+			jdbcType="VARCHAR" />
+		<result column="GPS_LATITUDE_THREE" property="gpsLatitudeThree"
+			jdbcType="VARCHAR" />
+		<result column="GPS_LONGITUDE_FOUR" property="gpsLongitudeFour"
+			jdbcType="VARCHAR" />
+		<result column="GPS_LATITUDE_FOUR" property="gpsLatitudeFour"
+			jdbcType="VARCHAR" />
+		<result column="GPS_LONGITUDE_FIVE" property="gpsLongitudeFive"
+			jdbcType="VARCHAR" />
+		<result column="GPS_LATITUDE_FIVE" property="gpsLatitudeFive"
+			jdbcType="VARCHAR" />
+		<result column="ACCELEROMETER_DATA" property="accelerometerData"
+			jdbcType="VARCHAR" />
+		<result column="INSTAN_DOWNLOAD_SPEED" property="instanDownloadSpeed"
+			jdbcType="VARCHAR" />
+		<result column="USER_SCORE" property="userScore" jdbcType="VARCHAR" />
+		<result column="SAVEDATE" property="saveDate" jdbcType="TIMESTAMP" />
+		<result column="USER_TEL" property="userTel" jdbcType="VARCHAR" />
+		<result column="ELOADING" property="Eloading" jdbcType="VARCHAR" />
+		<result column="ESTALLING" property="Estalling" jdbcType="VARCHAR" />
+		<result column="EVMOS" property="EvMos" jdbcType="VARCHAR" />
+		<result column="CID" property="cid" jdbcType="VARCHAR" />
+		<result column="LAC" property="lac" jdbcType="VARCHAR" />
+		<result column="USERSCENE" property="userScene" jdbcType="VARCHAR" />
+		<result column="VIDEO_SERVER_IP" property="videoServerIp"
+			jdbcType="VARCHAR" />
+		<result column="VIDEO_SERVER_LOCATION" property="videoServerLocation"
+			jdbcType="VARCHAR" />
+		<result column="COUNTRY" property="country" jdbcType="VARCHAR" />
+		<result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+		<result column="CITY" property="city" jdbcType="VARCHAR" />
+		<result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+		<result column="UE_INTERNAL_IP" property="ueInternalIp"
+			jdbcType="VARCHAR" />
+		<result column="ELIGHT" property="elight" jdbcType="VARCHAR" />
+		<result column="ESTATE" property="estate" jdbcType="VARCHAR" />
+		<result column="PLMN" property="plmn" jdbcType="VARCHAR" />
+		<result column="IMSI" property="imsi" jdbcType="VARCHAR" />
+		<result column="UDID" property="udid" jdbcType="VARCHAR" />
+		<result column="MCC" property="mcc" jdbcType="VARCHAR" />
+		<result column="MNC" property="mnc" jdbcType="VARCHAR" />
+		<result column="CELL_SIGNAL_STRENGTH" property="cellSignalStrength"
+			jdbcType="VARCHAR" />
+		<result column="SINR" property="sinr" jdbcType="VARCHAR" />
+		<result column="PING_AVG_RTT" property="pingAvgRtt" jdbcType="VARCHAR" />
+		<result column="RES1" property="res1" jdbcType="VARCHAR" />
+		<result column="CARRIER" property="carrier" jdbcType="VARCHAR" />
+		<result column="LCID" property="lcid" jdbcType="VARCHAR" />
+		<result column="ENODEB_ID" property="enodebId" jdbcType="VARCHAR" />
+		<result column="PLAY_WAY" property="playWay" jdbcType="VARCHAR" />
+		<result column="STARTTIME" property="startTime" jdbcType="TIMESTAMP" />
+		<result column="VIDEOSIZE" property="videoSize" jdbcType="VARCHAR" />
+		<result column="VIDEONAME" property="videoName" jdbcType="VARCHAR" />
+		<result column="userBufferTime" property="userBufferTime"
+			jdbcType="VARCHAR" />
+		<result column="SCORESUGGEST" property="scoreSuggest" jdbcType="VARCHAR" />
+		<result column="DISPLAY" property="display" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<insert id="insert" parameterType="com.tsinghua.analysis.model.DataAnalysis">
+		insert into DATAANALYSIS
+		(DA_ID, SCREEN_RESOLUTION_LONG,
+		SCREEN_RESOLUTION_WIDTH,
+		VIDEO_CLARITY,
+		VIDEO_CODING_FORMAT, VIDEO_BITRATE,
+		BUFFERING_DELAY, VIDEO_PEAK_RATE,
+		VIDEO_KA_NUM,
+		VIDEO_KA_TOTAL_TIME, KA_DURATION_PROPORTION,
+		KA_DURATION_LONG_ONE, KA_DURATION_LONG_POINT_ONE,
+		KA_DURATION_LONG_TWO, KA_DURATION_LONG_POINT_TWO,
+		KA_DURATION_LONG_THREE, KA_DURATION_LONG_POINT_THREE,
+		KA_DURATION_LONG_FOUR, KA_DURATION_LONG_POINT_FOUR,
+		KA_DURATION_LONG_FIVE, KA_DURATION_LONG_POINT_FIVE,
+		KA_DURATION_LONG_SIX, KA_DURATION_LONG_POINT_SIX,
+		KA_DURATION_LONG_SEVEN, KA_DURATION_LONG_POINT_SEVEN,
+		KA_DURATION_LONG_EIGHT, KA_DURATION_LONG_POINT_EIGHT,
+		KA_DURATION_LONG_NINE, KA_DURATION_LONG_POINT_NINE,
+		KA_DURATION_LONG_TEN, KA_DURATION_LONG_POINT_TEN,
+		VIDEO_TOTAL_TIME,
+		VIDEO_PLAY_TOTAL_TIME, VIDEO_ALL_PEAK_RATE,
+		VIDEO_AVERAGE_PEAK_RATE,
+		LIGHT_INTENSITY, PHONE_SCREEN_BRIGHTNESS,
+		PHONE_PLACE_STATE,
+		ENVIRONMENTAL_NOISE, NETWORK_TYPE,
+		PHONE_ELECTRIC_START,
+		PHONE_ELECTRIC_END, SIGNAL_STRENGTH,
+		PHONE_VERSION, OPERATING_SYSTEM,
+		GPS_LONGITUDE_ONE,
+		GPS_LATITUDE_ONE, GPS_LONGITUDE_TWO,
+		GPS_LATITUDE_TWO,
+		GPS_LONGITUDE_THREE, GPS_LATITUDE_THREE,
+		GPS_LONGITUDE_FOUR,
+		GPS_LATITUDE_FOUR, GPS_LONGITUDE_FIVE,
+		GPS_LATITUDE_FIVE,
+		ACCELEROMETER_DATA, INSTAN_DOWNLOAD_SPEED,
+		USER_SCORE, SAVEDATE, USER_TEL,
+		ELOADING, ESTALLING, EVMOS, CID,
+		LAC,
+		USERSCENE, VIDEO_SERVER_IP,
+		VIDEO_SERVER_LOCATION, COUNTRY, PROVINCE,
+		CITY, ADDRESS, UE_INTERNAL_IP,
+		ELIGHT, ESTATE, PLMN,
+		IMSI, UDID, MCC,
+		MNC,
+		CELL_SIGNAL_STRENGTH, SINR, PING_AVG_RTT,
+		CARRIER, LCID,
+		ENODEB_ID,
+		PLAY_WAY, STARTTIME,
+		VIDEOSIZE, VIDEONAME,
+		USERBUFFERTIME,SCORESUGGEST,DISPLAY)
+		values (#{daId,jdbcType=VARCHAR},
+		#{screenResolutionLong,jdbcType=VARCHAR},
+		#{screenResolutionWidth,jdbcType=VARCHAR},
+		#{videoClarity,jdbcType=VARCHAR},
+		#{videoCodingFormat,jdbcType=VARCHAR},
+		#{videoBitrate,jdbcType=VARCHAR},
+		#{bufferingDelay,jdbcType=VARCHAR},
+		#{videoPeakRate,jdbcType=VARCHAR}, #{videoKaNum,jdbcType=VARCHAR},
+		#{videoKaTotalTime,jdbcType=VARCHAR},
+		#{kaDurationProportion,jdbcType=VARCHAR},
+		#{kaDurationLongOne,jdbcType=VARCHAR},
+		#{kaDurationLongPointOne,jdbcType=VARCHAR},
+		#{kaDurationLongTwo,jdbcType=VARCHAR},
+		#{kaDurationLongPointTwo,jdbcType=VARCHAR},
+		#{kaDurationLongThree,jdbcType=VARCHAR},
+		#{kaDurationLongPointThree,jdbcType=VARCHAR},
+		#{kaDurationLongFour,jdbcType=VARCHAR},
+		#{kaDurationLongPointFour,jdbcType=VARCHAR},
+		#{kaDurationLongFive,jdbcType=VARCHAR},
+		#{kaDurationLongPointFive,jdbcType=VARCHAR},
+		#{kaDurationLongSix,jdbcType=VARCHAR},
+		#{kaDurationLongPointSix,jdbcType=VARCHAR},
+		#{kaDurationLongSeven,jdbcType=VARCHAR},
+		#{kaDurationLongPointSeven,jdbcType=VARCHAR},
+		#{kaDurationLongEight,jdbcType=VARCHAR},
+		#{kaDurationLongPointEight,jdbcType=VARCHAR},
+		#{kaDurationLongNine,jdbcType=VARCHAR},
+		#{kaDurationLongPointNine,jdbcType=VARCHAR},
+		#{kaDurationLongTen,jdbcType=VARCHAR},
+		#{kaDurationLongPointTen,jdbcType=VARCHAR},
+		#{videoTotalTime,jdbcType=VARCHAR},
+		#{videoPlayTotalTime,jdbcType=VARCHAR},
+		#{videoAllPeakRate,jdbcType=VARCHAR},
+		#{videoAveragePeakRate,jdbcType=VARCHAR},
+		#{lightIntensity,jdbcType=VARCHAR},
+		#{phoneScreenBrightness,jdbcType=VARCHAR},
+		#{phonePlaceState,jdbcType=VARCHAR},
+		#{environmentalNoise,jdbcType=VARCHAR},
+		#{networkType,jdbcType=VARCHAR},
+		#{phoneElectricStart,jdbcType=VARCHAR},
+		#{phoneElectricEnd,jdbcType=VARCHAR},
+		#{signalStrength,jdbcType=VARCHAR},
+		#{phoneVersion,jdbcType=VARCHAR},
+		#{operatingSystem,jdbcType=VARCHAR},
+		#{gpsLongitudeOne,jdbcType=VARCHAR},
+		#{gpsLatitudeOne,jdbcType=VARCHAR},
+		#{gpsLongitudeTwo,jdbcType=VARCHAR},
+		#{gpsLatitudeTwo,jdbcType=VARCHAR},
+		#{gpsLongitudeThree,jdbcType=VARCHAR},
+		#{gpsLatitudeThree,jdbcType=VARCHAR},
+		#{gpsLongitudeFour,jdbcType=VARCHAR},
+		#{gpsLatitudeFour,jdbcType=VARCHAR},
+		#{gpsLongitudeFive,jdbcType=VARCHAR},
+		#{gpsLatitudeFive,jdbcType=VARCHAR},
+		#{accelerometerData,jdbcType=VARCHAR},
+		#{instanDownloadSpeed,jdbcType=VARCHAR},
+		#{userScore,jdbcType=VARCHAR}, #{saveDate,jdbcType=TIMESTAMP},
+		#{userTel,jdbcType=VARCHAR},
+		#{Eloading,jdbcType=VARCHAR},
+		#{Estalling,jdbcType=VARCHAR}, #{EvMos,jdbcType=VARCHAR},
+		#{cid,jdbcType=VARCHAR},
+		#{lac,jdbcType=VARCHAR},
+		#{userScene,jdbcType=VARCHAR}, #{videoServerIp,jdbcType=VARCHAR},
+		#{videoServerLocation,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR},
+		#{province,jdbcType=VARCHAR},
+		#{city,jdbcType=VARCHAR},
+		#{address,jdbcType=VARCHAR}, #{ueInternalIp,jdbcType=VARCHAR},
+		#{elight,jdbcType=VARCHAR}, #{estate,jdbcType=VARCHAR},
+		#{plmn,jdbcType=VARCHAR},
+		#{imsi,jdbcType=VARCHAR},
+		#{udid,jdbcType=VARCHAR}, #{mcc,jdbcType=VARCHAR},
+		#{mnc,jdbcType=VARCHAR},
+		#{cellSignalStrength,jdbcType=VARCHAR},
+		#{sinr,jdbcType=VARCHAR}, #{pingAvgRtt,jdbcType=VARCHAR},
+		#{carrier,jdbcType=VARCHAR},
+		#{lcid,jdbcType=VARCHAR},
+		#{enodebId,jdbcType=VARCHAR},
+		#{playWay,jdbcType=VARCHAR},
+		#{startTime,jdbcType=TIMESTAMP},
+		#{videoSize,jdbcType=VARCHAR},
+		#{videoName,jdbcType=VARCHAR},
+		#{userBufferTime,jdbcType=VARCHAR},
+		#{scoreSuggest,jdbcType=VARCHAR},
+		#{display,jdbcType=VARCHAR})
+	</insert>
+</mapper>

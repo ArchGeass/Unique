@@ -125,8 +125,7 @@
 
 	<!-- 配置那些类的方法进行事务管理 -->
 	<aop:config>
-		<aop:pointcut id="allManagerMethod"
-			expression="execution (* com.tsinghua.*.*(..))" />
+		<aop:pointcut id="allManagerMethod" expression="execution (* com.tsinghua.*.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="allManagerMethod" />
 	</aop:config>
 
@@ -135,5 +134,10 @@
 	<jaxws:endpoint id="VideoListService"
 		implementor="com.tsinghua.analysis.service.impl.VideoListServiceImpl"
 		address="/VideoListService">
+	</jaxws:endpoint>
+	<!-- 测试数据存储接口 -->
+	<jaxws:endpoint id="DataAnalysisService"
+		implementor="com.tsinghua.analysis.service.impl.DataAnalysisServiceImpl"
+		address="/DataAnalysisService">
 	</jaxws:endpoint>
 </beans>

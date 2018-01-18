@@ -5,10 +5,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.tsinghua.analysis.dao.IDataAnalysisDao;
+import com.tsinghua.analysis.model.DataAnalysis;
 
 @Repository
 public class DataAnalysisDaoImpl implements IDataAnalysisDao{
 
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
+
+	@Override
+	public int insert(DataAnalysis data) {
+		return sqlSessionTemplate.getMapper(IDataAnalysisDao.class).insert(data);
+	}
 }
