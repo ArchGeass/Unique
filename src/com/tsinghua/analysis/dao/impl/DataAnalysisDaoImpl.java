@@ -17,4 +17,14 @@ public class DataAnalysisDaoImpl implements IDataAnalysisDao{
 	public int insert(DataAnalysis data) {
 		return sqlSessionTemplate.getMapper(IDataAnalysisDao.class).insert(data);
 	}
+
+	@Override
+	public int insertSelective(DataAnalysis data) {
+		return sqlSessionTemplate.getMapper(IDataAnalysisDao.class).insertSelective(data);
+	}
+
+	@Override
+	public int updateByPrimaryKeySelective(DataAnalysis data) {
+		return sqlSessionTemplate.getMapper(IDataAnalysisDao.class).updateByPrimaryKeySelective(data);
+	}
 }

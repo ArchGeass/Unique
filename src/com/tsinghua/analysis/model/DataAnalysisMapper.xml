@@ -143,7 +143,6 @@
 			jdbcType="VARCHAR" />
 		<result column="SINR" property="sinr" jdbcType="VARCHAR" />
 		<result column="PING_AVG_RTT" property="pingAvgRtt" jdbcType="VARCHAR" />
-		<result column="RES1" property="res1" jdbcType="VARCHAR" />
 		<result column="CARRIER" property="carrier" jdbcType="VARCHAR" />
 		<result column="LCID" property="lcid" jdbcType="VARCHAR" />
 		<result column="ENODEB_ID" property="enodebId" jdbcType="VARCHAR" />
@@ -293,4 +292,851 @@
 		#{scoreSuggest,jdbcType=VARCHAR},
 		#{display,jdbcType=VARCHAR})
 	</insert>
+	<insert id="insertSelective" parameterType="com.tsinghua.analysis.model.DataAnalysis">
+		insert into DATAANALYSIS
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="daId != null">
+				DA_ID,
+			</if>
+			<if test="screenResolutionLong != null">
+				SCREEN_RESOLUTION_LONG,
+			</if>
+			<if test="screenResolutionWidth != null">
+				SCREEN_RESOLUTION_WIDTH,
+			</if>
+			<if test="videoClarity != null">
+				VIDEO_CLARITY,
+			</if>
+			<if test="videoCodingFormat != null">
+				VIDEO_CODING_FORMAT,
+			</if>
+			<if test="videoBitrate != null">
+				VIDEO_BITRATE,
+			</if>
+			<if test="bufferingDelay != null">
+				BUFFERING_DELAY,
+			</if>
+			<if test="videoPeakRate != null">
+				VIDEO_PEAK_RATE,
+			</if>
+			<if test="videoKaNum != null">
+				VIDEO_KA_NUM,
+			</if>
+			<if test="videoKaTotalTime != null">
+				VIDEO_KA_TOTAL_TIME,
+			</if>
+			<if test="kaDurationProportion != null">
+				KA_DURATION_PROPORTION,
+			</if>
+			<if test="kaDurationLongOne != null">
+				KA_DURATION_LONG_ONE,
+			</if>
+			<if test="kaDurationLongPointOne != null">
+				KA_DURATION_LONG_POINT_ONE,
+			</if>
+			<if test="kaDurationLongTwo != null">
+				KA_DURATION_LONG_TWO,
+			</if>
+			<if test="kaDurationLongPointTwo != null">
+				KA_DURATION_LONG_POINT_TWO,
+			</if>
+			<if test="kaDurationLongThree != null">
+				KA_DURATION_LONG_THREE,
+			</if>
+			<if test="kaDurationLongPointThree != null">
+				KA_DURATION_LONG_POINT_THREE,
+			</if>
+			<if test="kaDurationLongFour != null">
+				KA_DURATION_LONG_FOUR,
+			</if>
+			<if test="kaDurationLongPointFour != null">
+				KA_DURATION_LONG_POINT_FOUR,
+			</if>
+			<if test="kaDurationLongFive != null">
+				KA_DURATION_LONG_FIVE,
+			</if>
+			<if test="kaDurationLongPointFive != null">
+				KA_DURATION_LONG_POINT_FIVE,
+			</if>
+			<if test="kaDurationLongSix != null">
+				KA_DURATION_LONG_SIX,
+			</if>
+			<if test="kaDurationLongPointSix != null">
+				KA_DURATION_LONG_POINT_SIX,
+			</if>
+			<if test="kaDurationLongSeven != null">
+				KA_DURATION_LONG_SEVEN,
+			</if>
+			<if test="kaDurationLongPointSeven != null">
+				KA_DURATION_LONG_POINT_SEVEN,
+			</if>
+			<if test="kaDurationLongEight != null">
+				KA_DURATION_LONG_EIGHT,
+			</if>
+			<if test="kaDurationLongPointEight != null">
+				KA_DURATION_LONG_POINT_EIGHT,
+			</if>
+			<if test="kaDurationLongNine != null">
+				KA_DURATION_LONG_NINE,
+			</if>
+			<if test="kaDurationLongPointNine != null">
+				KA_DURATION_LONG_POINT_NINE,
+			</if>
+			<if test="kaDurationLongTen != null">
+				KA_DURATION_LONG_TEN,
+			</if>
+			<if test="kaDurationLongPointTen != null">
+				KA_DURATION_LONG_POINT_TEN,
+			</if>
+			<if test="videoTotalTime != null">
+				VIDEO_TOTAL_TIME,
+			</if>
+			<if test="videoPlayTotalTime != null">
+				VIDEO_PLAY_TOTAL_TIME,
+			</if>
+			<if test="videoAllPeakRate != null">
+				VIDEO_ALL_PEAK_RATE,
+			</if>
+			<if test="videoAveragePeakRate != null">
+				VIDEO_AVERAGE_PEAK_RATE,
+			</if>
+			<if test="lightIntensity != null">
+				LIGHT_INTENSITY,
+			</if>
+			<if test="phoneScreenBrightness != null">
+				PHONE_SCREEN_BRIGHTNESS,
+			</if>
+			<if test="phonePlaceState != null">
+				PHONE_PLACE_STATE,
+			</if>
+			<if test="environmentalNoise != null">
+				ENVIRONMENTAL_NOISE,
+			</if>
+			<if test="networkType != null">
+				NETWORK_TYPE,
+			</if>
+			<if test="phoneElectricStart != null">
+				PHONE_ELECTRIC_START,
+			</if>
+			<if test="phoneElectricEnd != null">
+				PHONE_ELECTRIC_END,
+			</if>
+			<if test="signalStrength != null">
+				SIGNAL_STRENGTH,
+			</if>
+			<if test="phoneVersion != null">
+				PHONE_VERSION,
+			</if>
+			<if test="operatingSystem != null">
+				OPERATING_SYSTEM,
+			</if>
+			<if test="gpsLongitudeOne != null">
+				GPS_LONGITUDE_ONE,
+			</if>
+			<if test="gpsLatitudeOne != null">
+				GPS_LATITUDE_ONE,
+			</if>
+			<if test="gpsLongitudeTwo != null">
+				GPS_LONGITUDE_TWO,
+			</if>
+			<if test="gpsLatitudeTwo != null">
+				GPS_LATITUDE_TWO,
+			</if>
+			<if test="gpsLongitudeThree != null">
+				GPS_LONGITUDE_THREE,
+			</if>
+			<if test="gpsLatitudeThree != null">
+				GPS_LATITUDE_THREE,
+			</if>
+			<if test="gpsLongitudeFour != null">
+				GPS_LONGITUDE_FOUR,
+			</if>
+			<if test="gpsLatitudeFour != null">
+				GPS_LATITUDE_FOUR,
+			</if>
+			<if test="gpsLongitudeFive != null">
+				GPS_LONGITUDE_FIVE,
+			</if>
+			<if test="gpsLatitudeFive != null">
+				GPS_LATITUDE_FIVE,
+			</if>
+			<if test="accelerometerData != null">
+				ACCELEROMETER_DATA,
+			</if>
+			<if test="instanDownloadSpeed != null">
+				INSTAN_DOWNLOAD_SPEED,
+			</if>
+			<if test="userScore != null">
+				USER_SCORE,
+			</if>
+			<if test="saveDate != null">
+				SAVEDATE,
+			</if>
+			<if test="userTel != null">
+				USER_TEL,
+			</if>
+			<if test="Eloading != null">
+				ELOADING,
+			</if>
+			<if test="Estalling != null">
+				ESTALLING,
+			</if>
+			<if test="EvMos != null">
+				EVMOS,
+			</if>
+			<if test="cid != null">
+				CID,
+			</if>
+			<if test="lac != null">
+				LAC,
+			</if>
+			<if test="userScene != null">
+				USERSCENE,
+			</if>
+			<if test="videoServerIp != null">
+				VIDEO_SERVER_IP,
+			</if>
+			<if test="videoServerLocation != null">
+				VIDEO_SERVER_LOCATION,
+			</if>
+			<if test="country != null">
+				COUNTRY,
+			</if>
+			<if test="province != null">
+				PROVINCE,
+			</if>
+			<if test="city != null">
+				CITY,
+			</if>
+			<if test="address != null">
+				ADDRESS,
+			</if>
+			<if test="ueInternalIp != null">
+				UE_INTERNAL_IP,
+			</if>
+			<if test="elight != null">
+				ELIGHT,
+			</if>
+			<if test="estate != null">
+				ESTATE,
+			</if>
+			<if test="plmn != null">
+				PLMN,
+			</if>
+			<if test="imsi != null">
+				IMSI,
+			</if>
+			<if test="udid != null">
+				UDID,
+			</if>
+			<if test="mcc != null">
+				MCC,
+			</if>
+			<if test="mnc != null">
+				MNC,
+			</if>
+			<if test="cellSignalStrength != null">
+				CELL_SIGNAL_STRENGTH,
+			</if>
+			<if test="sinr != null">
+				SINR,
+			</if>
+			<if test="pingAvgRtt != null">
+				PING_AVG_RTT,
+			</if>
+			<if test="carrier != null">
+				CARRIER,
+			</if>
+			<if test="lcid != null">
+				LCID,
+			</if>
+			<if test="enodebId != null">
+				ENODEB_ID,
+			</if>
+			<if test="playWay != null">
+				PLAY_WAY,
+			</if>
+			<if test="startTime != null">
+				STARTTIME,
+			</if>
+			<if test="videoSize != null">
+				VIDEOSIZE,
+			</if>
+			<if test="videoName != null">
+				VIDEONAME,
+			</if>
+			<if test="userBufferTime != null">
+				USERBUFFERTIME,
+			</if>
+			<if test="scoreSuggest != null">
+				SCORESUGGEST,
+			</if>
+			<if test="display != null">
+				DISPLAY,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="daId != null">
+				#{daId,jdbcType=VARCHAR},
+			</if>
+			<if test="screenResolutionLong != null">
+				#{screenResolutionLong,jdbcType=VARCHAR},
+			</if>
+			<if test="screenResolutionWidth != null">
+				#{screenResolutionWidth,jdbcType=VARCHAR},
+			</if>
+			<if test="videoClarity != null">
+				#{videoClarity,jdbcType=VARCHAR},
+			</if>
+			<if test="videoCodingFormat != null">
+				#{videoCodingFormat,jdbcType=VARCHAR},
+			</if>
+			<if test="videoBitrate != null">
+				#{videoBitrate,jdbcType=VARCHAR},
+			</if>
+			<if test="bufferingDelay != null">
+				#{bufferingDelay,jdbcType=VARCHAR},
+			</if>
+			<if test="videoPeakRate != null">
+				#{videoPeakRate,jdbcType=VARCHAR},
+			</if>
+			<if test="videoKaNum != null">
+				#{videoKaNum,jdbcType=VARCHAR},
+			</if>
+			<if test="videoKaTotalTime != null">
+				#{videoKaTotalTime,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationProportion != null">
+				#{kaDurationProportion,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongOne != null">
+				#{kaDurationLongOne,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongPointOne != null">
+				#{kaDurationLongPointOne,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongTwo != null">
+				#{kaDurationLongTwo,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongPointTwo != null">
+				#{kaDurationLongPointTwo,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongThree != null">
+				#{kaDurationLongThree,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongPointThree != null">
+				#{kaDurationLongPointThree,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongFour != null">
+				#{kaDurationLongFour,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongPointFour != null">
+				#{kaDurationLongPointFour,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongFive != null">
+				#{kaDurationLongFive,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongPointFive != null">
+				#{kaDurationLongPointFive,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongSix != null">
+				#{kaDurationLongSix,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongPointSix != null">
+				#{kaDurationLongPointSix,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongSeven != null">
+				#{kaDurationLongSeven,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongPointSeven != null">
+				#{kaDurationLongPointSeven,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongEight != null">
+				#{kaDurationLongEight,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongPointEight != null">
+				#{kaDurationLongPointEight,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongNine != null">
+				#{kaDurationLongNine,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongPointNine != null">
+				#{kaDurationLongPointNine,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongTen != null">
+				#{kaDurationLongTen,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongPointTen != null">
+				#{kaDurationLongPointTen,jdbcType=VARCHAR},
+			</if>
+			<if test="videoTotalTime != null">
+				#{videoTotalTime,jdbcType=VARCHAR},
+			</if>
+			<if test="videoPlayTotalTime != null">
+				#{videoPlayTotalTime,jdbcType=VARCHAR},
+			</if>
+			<if test="videoAllPeakRate != null">
+				#{videoAllPeakRate,jdbcType=VARCHAR},
+			</if>
+			<if test="videoAveragePeakRate != null">
+				#{videoAveragePeakRate,jdbcType=VARCHAR},
+			</if>
+			<if test="lightIntensity != null">
+				#{lightIntensity,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneScreenBrightness != null">
+				#{phoneScreenBrightness,jdbcType=VARCHAR},
+			</if>
+			<if test="phonePlaceState != null">
+				#{phonePlaceState,jdbcType=VARCHAR},
+			</if>
+			<if test="environmentalNoise != null">
+				#{environmentalNoise,jdbcType=VARCHAR},
+			</if>
+			<if test="networkType != null">
+				#{networkType,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneElectricStart != null">
+				#{phoneElectricStart,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneElectricEnd != null">
+				#{phoneElectricEnd,jdbcType=VARCHAR},
+			</if>
+			<if test="signalStrength != null">
+				#{signalStrength,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneVersion != null">
+				#{phoneVersion,jdbcType=VARCHAR},
+			</if>
+			<if test="operatingSystem != null">
+				#{operatingSystem,jdbcType=VARCHAR},
+			</if>
+			<if test="gpsLongitudeOne != null">
+				#{gpsLongitudeOne,jdbcType=VARCHAR},
+			</if>
+			<if test="gpsLatitudeOne != null">
+				#{gpsLatitudeOne,jdbcType=VARCHAR},
+			</if>
+			<if test="gpsLongitudeTwo != null">
+				#{gpsLongitudeTwo,jdbcType=VARCHAR},
+			</if>
+			<if test="gpsLatitudeTwo != null">
+				#{gpsLatitudeTwo,jdbcType=VARCHAR},
+			</if>
+			<if test="gpsLongitudeThree != null">
+				#{gpsLongitudeThree,jdbcType=VARCHAR},
+			</if>
+			<if test="gpsLatitudeThree != null">
+				#{gpsLatitudeThree,jdbcType=VARCHAR},
+			</if>
+			<if test="gpsLongitudeFour != null">
+				#{gpsLongitudeFour,jdbcType=VARCHAR},
+			</if>
+			<if test="gpsLatitudeFour != null">
+				#{gpsLatitudeFour,jdbcType=VARCHAR},
+			</if>
+			<if test="gpsLongitudeFive != null">
+				#{gpsLongitudeFive,jdbcType=VARCHAR},
+			</if>
+			<if test="gpsLatitudeFive != null">
+				#{gpsLatitudeFive,jdbcType=VARCHAR},
+			</if>
+			<if test="accelerometerData != null">
+				#{accelerometerData,jdbcType=VARCHAR},
+			</if>
+			<if test="instanDownloadSpeed != null">
+				#{instanDownloadSpeed,jdbcType=VARCHAR},
+			</if>
+			<if test="userScore != null">
+				#{userScore,jdbcType=VARCHAR},
+			</if>
+			<if test="saveDate != null">
+				#{saveDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userTel != null">
+				#{userTel,jdbcType=VARCHAR},
+			</if>
+			<if test="Eloading != null">
+				#{Eloading,jdbcType=VARCHAR},
+			</if>
+			<if test="Estalling != null">
+				#{Estalling,jdbcType=VARCHAR},
+			</if>
+			<if test="EvMos != null">
+				#{EvMos,jdbcType=VARCHAR},
+			</if>
+			<if test="cid != null">
+				#{cid,jdbcType=VARCHAR},
+			</if>
+			<if test="lac != null">
+				#{lac,jdbcType=VARCHAR},
+			</if>
+			<if test="userScene != null">
+				#{userScene,jdbcType=VARCHAR},
+			</if>
+			<if test="videoServerIp != null">
+				#{videoServerIp,jdbcType=VARCHAR},
+			</if>
+			<if test="videoServerLocation != null">
+				#{videoServerLocation,jdbcType=VARCHAR},
+			</if>
+			<if test="country != null">
+				#{country,jdbcType=VARCHAR},
+			</if>
+			<if test="province != null">
+				#{province,jdbcType=VARCHAR},
+			</if>
+			<if test="city != null">
+				#{city,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				#{address,jdbcType=VARCHAR},
+			</if>
+			<if test="ueInternalIp != null">
+				#{ueInternalIp,jdbcType=VARCHAR},
+			</if>
+			<if test="elight != null">
+				#{elight,jdbcType=VARCHAR},
+			</if>
+			<if test="estate != null">
+				#{estate,jdbcType=VARCHAR},
+			</if>
+			<if test="plmn != null">
+				#{plmn,jdbcType=VARCHAR},
+			</if>
+			<if test="imsi != null">
+				#{imsi,jdbcType=VARCHAR},
+			</if>
+			<if test="udid != null">
+				#{udid,jdbcType=VARCHAR},
+			</if>
+			<if test="mcc != null">
+				#{mcc,jdbcType=VARCHAR},
+			</if>
+			<if test="mnc != null">
+				#{mnc,jdbcType=VARCHAR},
+			</if>
+			<if test="cellSignalStrength != null">
+				#{cellSignalStrength,jdbcType=VARCHAR},
+			</if>
+			<if test="sinr != null">
+				#{sinr,jdbcType=VARCHAR},
+			</if>
+			<if test="pingAvgRtt != null">
+				#{pingAvgRtt,jdbcType=VARCHAR},
+			</if>
+			<if test="carrier != null">
+				#{carrier,jdbcType=VARCHAR},
+			</if>
+			<if test="lcid != null">
+				#{lcid,jdbcType=VARCHAR},
+			</if>
+			<if test="enodebId != null">
+				#{enodebId,jdbcType=VARCHAR},
+			</if>
+			<if test="playWay != null">
+				#{playWay,jdbcType=VARCHAR},
+			</if>
+			<if test="startTime != null">
+				#{startTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="videoSize != null">
+				#{videoSize,jdbcType=VARCHAR},
+			</if>
+			<if test="videoName != null">
+				#{videoName,jdbcType=VARCHAR},
+			</if>
+			<if test="userBufferTime != null">
+				#{userBufferTime,jdbcType=VARCHAR},
+			</if>
+			<if test="scoreSuggest != null">
+				#{scoreSuggest,jdbcType=VARCHAR},
+			</if>
+			<if test="display != null">
+				#{display,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.tsinghua.analysis.model.DataAnalysis">
+		update DATAANALYSIS
+		<set>
+			<if test="screenResolutionLong != null">
+				SCREEN_RESOLUTION_LONG = #{screenResolutionLong,jdbcType=VARCHAR},
+			</if>
+			<if test="screenResolutionWidth != null">
+				SCREEN_RESOLUTION_WIDTH = #{screenResolutionWidth,jdbcType=VARCHAR},
+			</if>
+			<if test="videoClarity != null">
+				VIDEO_CLARITY = #{videoClarity,jdbcType=VARCHAR},
+			</if>
+			<if test="videoCodingFormat != null">
+				VIDEO_CODING_FORMAT = #{videoCodingFormat,jdbcType=VARCHAR},
+			</if>
+			<if test="videoBitrate != null">
+				VIDEO_BITRATE = #{videoBitrate,jdbcType=VARCHAR},
+			</if>
+			<if test="bufferingDelay != null">
+				BUFFERING_DELAY = #{bufferingDelay,jdbcType=VARCHAR},
+			</if>
+			<if test="videoPeakRate != null">
+				VIDEO_PEAK_RATE = #{videoPeakRate,jdbcType=VARCHAR},
+			</if>
+			<if test="videoKaNum != null">
+				VIDEO_KA_NUM = #{videoKaNum,jdbcType=VARCHAR},
+			</if>
+			<if test="videoKaTotalTime != null">
+				VIDEO_KA_TOTAL_TIME = #{videoKaTotalTime,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationProportion != null">
+				KA_DURATION_PROPORTION = #{kaDurationProportion,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongOne != null">
+				KA_DURATION_LONG_ONE = #{kaDurationLongOne,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongPointOne != null">
+				KA_DURATION_LONG_POINT_ONE = #{kaDurationLongPointOne,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongTwo != null">
+				KA_DURATION_LONG_TWO = #{kaDurationLongTwo,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongPointTwo != null">
+				KA_DURATION_LONG_POINT_TWO = #{kaDurationLongPointTwo,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongThree != null">
+				KA_DURATION_LONG_THREE = #{kaDurationLongThree,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongPointThree != null">
+				KA_DURATION_LONG_POINT_THREE = #{kaDurationLongPointThree,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongFour != null">
+				KA_DURATION_LONG_FOUR = #{kaDurationLongFour,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongPointFour != null">
+				KA_DURATION_LONG_POINT_FOUR = #{kaDurationLongPointFour,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongFive != null">
+				KA_DURATION_LONG_FIVE = #{kaDurationLongFive,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongPointFive != null">
+				KA_DURATION_LONG_POINT_FIVE = #{kaDurationLongPointFive,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongSix != null">
+				KA_DURATION_LONG_SIX = #{kaDurationLongSix,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongPointSix != null">
+				KA_DURATION_LONG_POINT_SIX = #{kaDurationLongPointSix,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongSeven != null">
+				KA_DURATION_LONG_SEVEN = #{kaDurationLongSeven,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongPointSeven != null">
+				KA_DURATION_LONG_POINT_SEVEN = #{kaDurationLongPointSeven,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongEight != null">
+				KA_DURATION_LONG_EIGHT = #{kaDurationLongEight,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongPointEight != null">
+				KA_DURATION_LONG_POINT_EIGHT = #{kaDurationLongPointEight,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongNine != null">
+				KA_DURATION_LONG_NINE = #{kaDurationLongNine,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongPointNine != null">
+				KA_DURATION_LONG_POINT_NINE = #{kaDurationLongPointNine,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongTen != null">
+				KA_DURATION_LONG_TEN = #{kaDurationLongTen,jdbcType=VARCHAR},
+			</if>
+			<if test="kaDurationLongPointTen != null">
+				KA_DURATION_LONG_POINT_TEN = #{kaDurationLongPointTen,jdbcType=VARCHAR},
+			</if>
+			<if test="videoTotalTime != null">
+				VIDEO_TOTAL_TIME = #{videoTotalTime,jdbcType=VARCHAR},
+			</if>
+			<if test="videoPlayTotalTime != null">
+				VIDEO_PLAY_TOTAL_TIME = #{videoPlayTotalTime,jdbcType=VARCHAR},
+			</if>
+			<if test="videoAllPeakRate != null">
+				VIDEO_ALL_PEAK_RATE = #{videoAllPeakRate,jdbcType=VARCHAR},
+			</if>
+			<if test="videoAveragePeakRate != null">
+				VIDEO_AVERAGE_PEAK_RATE = #{videoAveragePeakRate,jdbcType=VARCHAR},
+			</if>
+			<if test="lightIntensity != null">
+				LIGHT_INTENSITY = #{lightIntensity,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneScreenBrightness != null">
+				PHONE_SCREEN_BRIGHTNESS = #{phoneScreenBrightness,jdbcType=VARCHAR},
+			</if>
+			<if test="phonePlaceState != null">
+				PHONE_PLACE_STATE = #{phonePlaceState,jdbcType=VARCHAR},
+			</if>
+			<if test="environmentalNoise != null">
+				ENVIRONMENTAL_NOISE = #{environmentalNoise,jdbcType=VARCHAR},
+			</if>
+			<if test="networkType != null">
+				NETWORK_TYPE = #{networkType,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneElectricStart != null">
+				PHONE_ELECTRIC_START = #{phoneElectricStart,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneElectricEnd != null">
+				PHONE_ELECTRIC_END = #{phoneElectricEnd,jdbcType=VARCHAR},
+			</if>
+			<if test="signalStrength != null">
+				SIGNAL_STRENGTH = #{signalStrength,jdbcType=VARCHAR},
+			</if>
+			<if test="phoneVersion != null">
+				PHONE_VERSION = #{phoneVersion,jdbcType=VARCHAR},
+			</if>
+			<if test="operatingSystem != null">
+				OPERATING_SYSTEM = #{operatingSystem,jdbcType=VARCHAR},
+			</if>
+			<if test="gpsLongitudeOne != null">
+				GPS_LONGITUDE_ONE = #{gpsLongitudeOne,jdbcType=VARCHAR},
+			</if>
+			<if test="gpsLatitudeOne != null">
+				GPS_LATITUDE_ONE = #{gpsLatitudeOne,jdbcType=VARCHAR},
+			</if>
+			<if test="gpsLongitudeTwo != null">
+				GPS_LONGITUDE_TWO = #{gpsLongitudeTwo,jdbcType=VARCHAR},
+			</if>
+			<if test="gpsLatitudeTwo != null">
+				GPS_LATITUDE_TWO = #{gpsLatitudeTwo,jdbcType=VARCHAR},
+			</if>
+			<if test="gpsLongitudeThree != null">
+				GPS_LONGITUDE_THREE = #{gpsLongitudeThree,jdbcType=VARCHAR},
+			</if>
+			<if test="gpsLatitudeThree != null">
+				GPS_LATITUDE_THREE = #{gpsLatitudeThree,jdbcType=VARCHAR},
+			</if>
+			<if test="gpsLongitudeFour != null">
+				GPS_LONGITUDE_FOUR = #{gpsLongitudeFour,jdbcType=VARCHAR},
+			</if>
+			<if test="gpsLatitudeFour != null">
+				GPS_LATITUDE_FOUR = #{gpsLatitudeFour,jdbcType=VARCHAR},
+			</if>
+			<if test="gpsLongitudeFive != null">
+				GPS_LONGITUDE_FIVE = #{gpsLongitudeFive,jdbcType=VARCHAR},
+			</if>
+			<if test="gpsLatitudeFive != null">
+				GPS_LATITUDE_FIVE = #{gpsLatitudeFive,jdbcType=VARCHAR},
+			</if>
+			<if test="accelerometerData != null">
+				ACCELEROMETER_DATA = #{accelerometerData,jdbcType=VARCHAR},
+			</if>
+			<if test="instanDownloadSpeed != null">
+				INSTAN_DOWNLOAD_SPEED = #{instanDownloadSpeed,jdbcType=VARCHAR},
+			</if>
+			<if test="userScore != null">
+				USER_SCORE = #{userScore,jdbcType=VARCHAR},
+			</if>
+			<if test="saveDate != null">
+				SAVEDATE = #{saveDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="userTel != null">
+				USER_TEL = #{userTel,jdbcType=VARCHAR},
+			</if>
+			<if test="Eloading != null">
+				ELOADING = #{Eloading,jdbcType=VARCHAR},
+			</if>
+			<if test="Estalling != null">
+				ESTALLING = #{Estalling,jdbcType=VARCHAR},
+			</if>
+			<if test="EvMos != null">
+				EVMOS = #{EvMos,jdbcType=VARCHAR},
+			</if>
+			<if test="cid != null">
+				CID = #{cid,jdbcType=VARCHAR},
+			</if>
+			<if test="lac != null">
+				LAC = #{lac,jdbcType=VARCHAR},
+			</if>
+			<if test="userScene != null">
+				USERSCENE = #{userScene,jdbcType=VARCHAR},
+			</if>
+			<if test="videoServerIp != null">
+				VIDEO_SERVER_IP = #{videoServerIp,jdbcType=VARCHAR},
+			</if>
+			<if test="videoServerLocation != null">
+				VIDEO_SERVER_LOCATION = #{videoServerLocation,jdbcType=VARCHAR},
+			</if>
+			<if test="country != null">
+				COUNTRY = #{country,jdbcType=VARCHAR},
+			</if>
+			<if test="province != null">
+				PROVINCE = #{province,jdbcType=VARCHAR},
+			</if>
+			<if test="city != null">
+				CITY = #{city,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				ADDRESS = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="ueInternalIp != null">
+				UE_INTERNAL_IP = #{ueInternalIp,jdbcType=VARCHAR},
+			</if>
+			<if test="elight != null">
+				ELIGHT = #{elight,jdbcType=VARCHAR},
+			</if>
+			<if test="estate != null">
+				ESTATE = #{estate,jdbcType=VARCHAR},
+			</if>
+			<if test="plmn != null">
+				PLMN = #{plmn,jdbcType=VARCHAR},
+			</if>
+			<if test="imsi != null">
+				IMSI = #{imsi,jdbcType=VARCHAR},
+			</if>
+			<if test="udid != null">
+				UDID = #{udid,jdbcType=VARCHAR},
+			</if>
+			<if test="mcc != null">
+				MCC = #{mcc,jdbcType=VARCHAR},
+			</if>
+			<if test="mnc != null">
+				MNC = #{mnc,jdbcType=VARCHAR},
+			</if>
+			<if test="cellSignalStrength != null">
+				CELL_SIGNAL_STRENGTH = #{cellSignalStrength,jdbcType=VARCHAR},
+			</if>
+			<if test="sinr != null">
+				SINR = #{sinr,jdbcType=VARCHAR},
+			</if>
+			<if test="pingAvgRtt != null">
+				PING_AVG_RTT = #{pingAvgRtt,jdbcType=VARCHAR},
+			</if>
+			<if test="carrier != null">
+				CARRIER = #{carrier,jdbcType=VARCHAR},
+			</if>
+			<if test="lcid != null">
+				LCID = #{lcid,jdbcType=VARCHAR},
+			</if>
+			<if test="enodebId != null">
+				ENODEB_ID = #{enodebId,jdbcType=VARCHAR},
+			</if>
+			<if test="playWay != null">
+				PLAY_WAY = #{playWay,jdbcType=VARCHAR},
+			</if>
+			<if test="startTime != null">
+				STARTTIME = #{startTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="videoSize != null">
+				VIDEOSIZE = #{videoSize,jdbcType=VARCHAR},
+			</if>
+			<if test="videoName != null">
+				VIDEONAME = #{videoName,jdbcType=VARCHAR},
+			</if>
+			<if test="userBufferTime != null">
+				USERBUFFERTIME = #{userBufferTime,jdbcType=VARCHAR},
+			</if>
+			<if test="scoreSuggest != null">
+				SCORESUGGEST = #{scoreSuggest,jdbcType=VARCHAR},
+			</if>
+			<if test="display != null">
+				DISPLAY = #{display,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where DA_ID = #{daId,jdbcType=VARCHAR}
+	</update>
 </mapper>

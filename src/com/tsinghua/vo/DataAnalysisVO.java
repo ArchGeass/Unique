@@ -286,9 +286,6 @@ public class DataAnalysisVO {
 	/* 请求服务器时延 */
 	private String userBufferTime;
 
-	/* 用户对预测分数的建议 */
-	private String scoreSuggest;
-
 	/* 是否在历史记录展示,0否,1是 */
 	private String display;
 
@@ -650,10 +647,6 @@ public class DataAnalysisVO {
 
 	public String getUserBufferTime() {
 		return userBufferTime;
-	}
-
-	public String getScoreSuggest() {
-		return scoreSuggest;
 	}
 
 	public String getDisplay() {
