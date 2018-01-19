@@ -9,4 +9,6 @@ public interface IDataAnalysisDao {
 	int insertSelective(DataAnalysis data);
 	
 	int updateByPrimaryKeySelective(DataAnalysis data);
+	
+	DataAnalysis selectByPrimaryKey(String daid);
 }

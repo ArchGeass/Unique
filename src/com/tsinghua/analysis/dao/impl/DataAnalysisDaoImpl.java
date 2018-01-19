@@ -27,4 +27,9 @@ public class DataAnalysisDaoImpl implements IDataAnalysisDao{
 	public int updateByPrimaryKeySelective(DataAnalysis data) {
 		return sqlSessionTemplate.getMapper(IDataAnalysisDao.class).updateByPrimaryKeySelective(data);
 	}
+
+	@Override
+	public DataAnalysis selectByPrimaryKey(String daid) {
+		return sqlSessionTemplate.getMapper(IDataAnalysisDao.class).selectByPrimaryKey(daid);
+	}
 }

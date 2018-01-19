@@ -287,6 +287,12 @@ public class DataAnalysis {
 	
 	/* 是否在历史记录展示,0否,1是 */
 	private String display;
+	
+	/*模型预测分数*/
+	private String forecastScore;
+	
+	/*网络状态评价*/
+	private String networkStatus;
 
 	public String getDaId() {
 		return daId;
@@ -1031,4 +1037,21 @@ public class DataAnalysis {
 	public void setDisplay(String display) {
 		this.display = display;
 	}
+
+	public String getForecastScore() {
+		return forecastScore;
+	}
+
+	public void setForecastScore(String forecastScore) {
+		this.forecastScore = forecastScore;
+	}
+
+	public String getNetworkStatus() {
+		return networkStatus;
+	}
+
+	public void setNetworkStatus(String networkStatus) {
+		this.networkStatus = networkStatus;
+	}
+	
 }

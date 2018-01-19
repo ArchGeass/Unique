@@ -145,4 +145,9 @@
 		implementor="com.tsinghua.analysis.service.impl.ScoreSuggestServiceImpl"
 		address="/ScoreSuggestService">
 	</jaxws:endpoint>
+	<!-- 查询建议分数 -->
+	<jaxws:endpoint id="QueryScoreService"
+		implementor="com.tsinghua.analysis.service.impl.QueryScoreServiceImpl"
+		address="/QueryScoreService">
+	</jaxws:endpoint>
 </beans>
