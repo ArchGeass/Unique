@@ -9,33 +9,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tsinghua.analysis.dao.IDataAnalysisDao;
 import com.tsinghua.analysis.model.DataAnalysis;
-import com.tsinghua.analysis.service.IqueryScoreService;
+import com.tsinghua.analysis.service.IQueryDetailService;
 import com.tsinghua.utils.ResultJson;
+import com.tsinghua.vo.AnalysisDetailVO;
 import com.tsinghua.vo.DataId;
-import com.tsinghua.vo.ForecastVo;
 
 import net.sf.json.JSONObject;
 
-@WebService(targetNamespace = "http://queryScore.service.analysis.tsinghua.com/", name = "IqueryScoreService", serviceName = "IqueryScoreService")
-public class QueryScoreServiceImpl implements IqueryScoreService{
+@WebService(targetNamespace = "http://detailService.service.analysis.tsinghua.com/", name = "IQueryDetailService", serviceName = "IQueryDetailService")
+public class QueryDetailServiceImpl implements IQueryDetailService{
 
-	private static Logger logger = Logger.getLogger(QueryScoreServiceImpl.class);
+	private static Logger logger = Logger.getLogger(QueryDetailServiceImpl.class);
 	
 	@Autowired
 	private IDataAnalysisDao iDataAnalysisDao;
 	
-	@WebResult(name="return",targetNamespace="http://queryScore.service.analysis.tsinghua.com/")
+	@WebResult(name="return",targetNamespace="http://detailService.service.analysis.tsinghua.com/")
 	@WebMethod
 	@Override
-	public String queryScore(String param) {
+	public String detail(String param) {
 		DataId id = new DataId(param);
 		JSONObject resultJson = new JSONObject();
-		ForecastVo forecast = new ForecastVo();
+		AnalysisDetailVO advo = new AnalysisDetailVO();
 		DataAnalysis analysisModel = new DataAnalysis();
 		try {
 			analysisModel = iDataAnalysisDao.selectByPrimaryKey(id.getPrimaryKey());
-			forecast = forecast.getScore(analysisModel);
-			resultJson = forecast.toJson(forecast);
+			advo = advo.getData(analysisModel);
+			resultJson = advo.toJson(advo);
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());

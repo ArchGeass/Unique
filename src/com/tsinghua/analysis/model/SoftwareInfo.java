@@ -6,7 +6,7 @@ import java.util.Date;
  * @author sunchenlong
  * @time:2018年1月17日20点34分
  */
-public class Property {
+public class SoftwareInfo {
 
 	/*主键*/
 	private Integer id;

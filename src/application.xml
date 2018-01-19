@@ -150,4 +150,14 @@
 		implementor="com.tsinghua.analysis.service.impl.QueryScoreServiceImpl"
 		address="/QueryScoreService">
 	</jaxws:endpoint>
+	<!-- 查询测试数据详情 -->
+	<jaxws:endpoint id="QueryDetailService"
+		implementor="com.tsinghua.analysis.service.impl.QueryDetailServiceImpl"
+		address="/QueryDetailService">
+	</jaxws:endpoint>
+	<!-- 获取软件信息 -->
+	<jaxws:endpoint id="SoftwareInfoService"
+		implementor="com.tsinghua.analysis.service.impl.SoftwareInfoServiceImpl"
+		address="/SoftwareInfoService">
+	</jaxws:endpoint>
 </beans>

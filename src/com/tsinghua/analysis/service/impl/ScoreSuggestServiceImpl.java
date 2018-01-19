@@ -18,7 +18,7 @@ import net.sf.json.JSONObject;
 @WebService(targetNamespace = "http://scoreSuggest.service.analysis.tsinghua.com/", name = "IScoreSuggestService", serviceName = "IScoreSuggestService")
 public class ScoreSuggestServiceImpl implements IScoreSuggestService{
 
-	private static Logger logger = Logger.getLogger(DataAnalysisServiceImpl.class);
+	private static Logger logger = Logger.getLogger(ScoreSuggestServiceImpl.class);
 	
 	@Autowired
 	private IDataAnalysisDao iDataAnalysisDao;
