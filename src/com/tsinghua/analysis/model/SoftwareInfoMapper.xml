@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.tsinghua.analysis.dao.IPropertyDao">
-	<resultMap id="BaseResultMap" type="com.tsinghua.analysis.model.Property">
+<mapper namespace="com.tsinghua.analysis.dao.ISoftwareInfoDao">
+	<resultMap id="BaseResultMap" type="com.tsinghua.analysis.model.SoftwareInfo">
 		<id column="PROPERTY_ID" property="id" jdbcType="DECIMAL" />
 		<result column="SUMMARY" property="summary" jdbcType="VARCHAR" />
 		<result column="MESSAGE" property="message" jdbcType="VARCHAR" />

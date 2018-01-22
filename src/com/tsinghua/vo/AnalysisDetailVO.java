@@ -1072,11 +1072,119 @@ public class AnalysisDetailVO {
 	
 	public JSONObject toJson(AnalysisDetailVO vo){
 		JSONObject json = new JSONObject();
+		json.put("screenResolutionLong", vo.getScreenResolutionLong());
+		json.put("screenResolutionWidth", vo.getScreenResolutionWidth());
+		json.put("videoClarity", vo.getVideoClarity());
+		json.put("videoCodingFormat", vo.getVideoCodingFormat());
+		json.put("videoBitrate", vo.getVideoBitrate());
+		json.put("bufferingDelay", vo.getBufferingDelay());
+		json.put("videoPeakRate", vo.getVideoPeakRate());
+		json.put("videoKaNum", vo.getVideoKaNum());
+		json.put("videoKaTotalTime", vo.getVideoKaTotalTime());
+		json.put("kaDurationProportion", vo.getKaDurationProportion());
+		json.put("kaDurationLongOne", vo.getKaDurationLongOne());
+		json.put("kaDurationLongPointOne", vo.getKaDurationLongPointOne());
+		json.put("kaDurationLongTwo", vo.getKaDurationLongTwo());
+		json.put("kaDurationLongPointTwo", vo.getKaDurationLongPointTwo());
+		json.put("kaDurationLongThree", vo.getKaDurationLongThree());
+		json.put("kaDurationLongPointThree", vo.getKaDurationLongPointThree());
+		json.put("kaDurationLongFour", vo.getKaDurationLongFour());
+		json.put("kaDurationLongPointFour", vo.getKaDurationLongPointFour());
+		json.put("kaDurationLongFive", vo.getKaDurationLongFive());
+		json.put("kaDurationLongPointFive", vo.getKaDurationLongPointFive());
+		json.put("kaDurationLongSix", vo.getKaDurationLongSix());
+		json.put("kaDurationLongPointSix", vo.getKaDurationLongPointSix());
+		json.put("kaDurationLongSeven", vo.getKaDurationLongSeven());
+		json.put("kaDurationLongPointSeven", vo.getKaDurationLongPointSeven());
+		json.put("kaDurationLongEight", vo.getKaDurationLongEight());
+		json.put("kaDurationLongPointEight", vo.getKaDurationLongPointEight());
+		json.put("kaDurationLongNine", vo.getKaDurationLongNine());
+		json.put("kaDurationLongPointNine", vo.getKaDurationLongPointNine());
+		json.put("kaDurationLongTen", vo.getKaDurationLongTen());
+		json.put("kaDurationLongPointTen", vo.getKaDurationLongPointTen());
+		json.put("videoTotalTime", vo.getVideoTotalTime());
+		json.put("videoPlayTotalTime", vo.getVideoPlayTotalTime());
+		json.put("videoAllPeakRate", vo.getVideoAllPeakRate());
+		json.put("videoAveragePeakRate", vo.getVideoAveragePeakRate());
+		json.put("phonePlaceState", vo.getPhonePlaceState());
+		json.put("environmentalNoise", vo.getEnvironmentalNoise());
+		json.put("networkType", vo.getNetworkType());
+		json.put("phoneElectricStart", vo.getPhoneElectricStart());
+		json.put("phoneElectricEnd", vo.getPhoneElectricEnd());
+		json.put("signalStrength", vo.getSignalStrength());
+		json.put("phoneVersion", vo.getPhoneVersion());
+		json.put("operatingSystem", vo.getOperatingSystem());
+		json.put("gpsLongitudeOne", vo.getGpsLongitudeOne());
+		json.put("gpsLatitudeOne", vo.getGpsLatitudeOne());
+		json.put("gpsLongitudeTwo", vo.getGpsLongitudeTwo());
+		json.put("gpsLatitudeTwo", vo.getGpsLatitudeTwo());
+		json.put("gpsLongitudeThree", vo.getGpsLongitudeThree());
+		json.put("gpsLatitudeThree", vo.getGpsLatitudeThree());
+		json.put("gpsLongitudeFour", vo.getGpsLongitudeFour());
+		json.put("gpsLatitudeFour", vo.getGpsLatitudeFour());
+		json.put("gpsLongitudeFive", vo.getGpsLongitudeFive());
+		json.put("gpsLatitudeFive", vo.getGpsLatitudeFive());
+		json.put("instanDownloadSpeed", vo.getInstanDownloadSpeed());
+		json.put("userScore", vo.getUserScore());
+		json.put("saveDate", vo.getSaveDate());
+		json.put("PhoneNum", vo.getUserTel());
+		json.put("Eloading", vo.getEloading());
+		json.put("Estalling", vo.getEstalling());
+		json.put("EvMos", vo.getEvMos());
+		json.put("Cid", vo.getCid());
+		json.put("Lac", vo.getLac());
+		json.put("userScene", vo.getUserScene());
+		json.put("VideoServerIP", vo.getVideoServerIp());
+		json.put("VideoServerLocation", vo.getVideoServerLocation());
+		json.put("Country", vo.getCountry());
+		json.put("Province", vo.getProvince());
+		json.put("City", vo.getCity());
+		json.put("address", vo.getAddress());
+		json.put("UEInternalIP", vo.getUeInternalIp());
+		json.put("Elight", vo.getElight());
+		json.put("Estate", vo.getEstate());
+		json.put("PLMN", vo.getPlmn());
+		json.put("IMSI", vo.getImsi());
+		json.put("UDID", vo.getUdid());
+		json.put("MCC", vo.getMcc());
+		json.put("MNC", vo.getMnc());
+		json.put("CellSignalStrength", vo.getCellSignalStrength());
+		json.put("SINR", vo.getSinr());
+		json.put("PingAvgRTT", vo.getPingAvgRtt());
+		json.put("Carrier", vo.getCarrier());
+		json.put("lcid", vo.getLcid());
+		json.put("ENodeBID", vo.getEnodebId());
+		json.put("PlayWay", vo.getPlayWay());
+		json.put("startTime", vo.getStartTime());
+		json.put("videoSize", vo.getVideoSize());
+		json.put("videoName", vo.getVideoName());
+		json.put("userBufferTime", vo.getUserBufferTime());
+		json.put("scoreSuggest", vo.getScoreSuggest());
 		return json;
 	}
 	
 	/*计算平均信号强度*/
 	public String avgSignalStrength(String signalStrength){
-		return null;
+		String temp = signalStrength.replace("\"","")
+                .replace("[","")
+                .replace("]","");
+		String[] strArray = temp.split(",,");
+		Double sum = 0.0;
+        Integer i = 0;
+        for (String ever:strArray) {
+            if(!ever.isEmpty()){
+                if(ever.contains(",")){
+                    sum += Double.parseDouble(ever.replace(",",""));
+                }else {
+                    sum += Double.parseDouble(ever);
+                }
+                i++;
+            }
+        }
+        Integer avg = 0;
+        if(i != 0){
+        	avg = (int)(sum/i);
+        }
+		return avg.toString();
 	}
 }
