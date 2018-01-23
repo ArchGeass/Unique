@@ -16,7 +16,7 @@ import com.tsinghua.utils.ResultJson;
 
 import net.sf.json.JSONObject;
 
-@WebService(targetNamespace = "http://videoListService.service.analysis.tsinghua.com/", name = "IVideoListService", serviceName = "IVideoListService")
+@WebService(targetNamespace = "http://videolist.interfaces.service.webservice.tsinghua.com/", name = "IVideoListService", serviceName = "IVideoListService")
 public class VideoListServiceImpl implements IVideoListService{
 	
 	private static Logger logger = Logger.getLogger(VideoListServiceImpl.class);
@@ -24,7 +24,7 @@ public class VideoListServiceImpl implements IVideoListService{
 	@Autowired
 	private IVideoListDao iVideoListDao;
 
-	@WebResult(name="return",targetNamespace="http://videoListService.service.analysis.tsinghua.com/")
+	@WebResult(name="return",targetNamespace="http://videolist.interfaces.service.webservice.tsinghua.com/")
 	@WebMethod
 	@Override
 	public String videolist(String param) {
@@ -40,8 +40,13 @@ public class VideoListServiceImpl implements IVideoListService{
 			logger.error(e.getMessage());
 			return ResultJson.error(null);
 		}
-		resultJson.put("videoList", videoList);
-		return ResultJson.success(resultJson);
+		resultJson.put("videoUrl", videoList);
+//		return ResultJson.success(resultJson);
+		JSONObject jsonObj = new JSONObject();
+		jsonObj.put("code", "200");
+		jsonObj.put("message", "请求成功");
+		jsonObj.put("success_response_data", resultJson);
+		return jsonObj.toString();
 	}
 
 }

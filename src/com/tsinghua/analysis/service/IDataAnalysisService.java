@@ -9,10 +9,10 @@ import javax.jws.WebService;
  * @author sunchenlong
  * @time:2018年1月18日11点13分
  */
-@WebService(targetNamespace = "http://dataAnalysisService.service.analysis.tsinghua.com/", name = "IDataAnalysisService", serviceName = "IDataAnalysisService")
+@WebService(targetNamespace = "http://analysis.interfaces.service.webservice.tsinghua.com/", name = "IDataAnalysisService", serviceName = "IDataAnalysisService")
 public interface IDataAnalysisService {
 
-	@WebResult(name="return",targetNamespace="http://dataAnalysisService.service.analysis.tsinghua.com/")
+	@WebResult(name="return",targetNamespace="http://analysis.interfaces.service.webservice.tsinghua.com/")
 	@WebMethod
-	String save(@WebParam(name = "param", targetNamespace = "http://dataAnalysisService.service.analysis.tsinghua.com/")String param);
+	String insertData(@WebParam(name = "param", targetNamespace = "http://analysis.interfaces.service.webservice.tsinghua.com/")String param);
 }

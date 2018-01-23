@@ -131,14 +131,14 @@
 
 	<!-- WebService -->
 	<!-- 获取视频列表 -->
-	<jaxws:endpoint id="VideoListService"
+	<jaxws:endpoint id="videoListService"
 		implementor="com.tsinghua.analysis.service.impl.VideoListServiceImpl"
-		address="/VideoListService">
+		address="/videoListService">
 	</jaxws:endpoint>
 	<!-- 测试数据存储接口 -->
-	<jaxws:endpoint id="DataAnalysisService"
+	<jaxws:endpoint id="analysisService"
 		implementor="com.tsinghua.analysis.service.impl.DataAnalysisServiceImpl"
-		address="/DataAnalysisService">
+		address="/analysisService">
 	</jaxws:endpoint>
 	<!-- 存储用户提交测试建议分数 -->
 	<jaxws:endpoint id="ScoreSuggestService"
