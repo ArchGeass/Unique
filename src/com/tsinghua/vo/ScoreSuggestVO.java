@@ -4,6 +4,7 @@ import com.tsinghua.analysis.model.DataAnalysis;
 
 import net.sf.json.JSONObject;
 
+/*用户提交评价分数交互模型*/
 public class ScoreSuggestVO {
 
 	/* 数据主键 */
@@ -22,7 +23,7 @@ public class ScoreSuggestVO {
 
 	public ScoreSuggestVO(String param){
 		JSONObject obj = JSONObject.fromObject(param);
-		daId = obj.getString("daId");
+		daId = obj.getString("uuid");
 		scoreSuggest = obj.getString("scoreSuggest");
 	}
 	

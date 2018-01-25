@@ -5,6 +5,7 @@ import org.python.core.PyObject;
 import org.python.core.PyString;
 import org.python.util.PythonInterpreter;
 
+/*与python交互*/
 public class JavaToPy {
 
 	@SuppressWarnings("resource")

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tsinghua.analysis.dao.IDataAnalysisDao;
 import com.tsinghua.analysis.model.DataAnalysis;
-import com.tsinghua.analysis.service.IqueryScoreService;
+import com.tsinghua.analysis.service.IQueryScoreService;
 import com.tsinghua.utils.ResultJson;
 import com.tsinghua.vo.DataId;
 import com.tsinghua.vo.ForecastVo;
@@ -17,7 +17,7 @@ import com.tsinghua.vo.ForecastVo;
 import net.sf.json.JSONObject;
 
 @WebService(targetNamespace = "http://queryScore.service.analysis.tsinghua.com/", name = "IqueryScoreService", serviceName = "IqueryScoreService")
-public class QueryScoreServiceImpl implements IqueryScoreService{
+public class QueryScoreServiceImpl implements IQueryScoreService{
 
 	private static Logger logger = Logger.getLogger(QueryScoreServiceImpl.class);
 	

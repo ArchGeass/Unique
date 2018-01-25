@@ -8,7 +8,7 @@ import com.tsinghua.analysis.dao.ISoftwareInfoDao;
 import com.tsinghua.analysis.model.SoftwareInfo;
 
 @Repository
-public class SoftwareInfoDaoImpl implements ISoftwareInfoDao{
+public class SoftwareInfoDaoImpl implements ISoftwareInfoDao {
 
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;

@@ -5,6 +5,7 @@ import javax.jws.WebResult;
 import javax.jws.WebService;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tsinghua.analysis.dao.ISoftwareInfoDao;
 import com.tsinghua.analysis.model.SoftwareInfo;
@@ -15,14 +16,15 @@ import com.tsinghua.vo.SoftwareInfoVO;
 
 import net.sf.json.JSONObject;
 
-@WebService(targetNamespace = "http://SoftwareInfoService.service.analysis.tsinghua.com/", name = "ISoftwareInfoService", serviceName = "ISoftwareInfoService")
-public class SoftwareInfoServiceImpl implements ISoftwareInfoService{
+@WebService(targetNamespace = "http://softwareInfoService.service.analysis.tsinghua.com/", name = "ISoftwareInfoService", serviceName = "ISoftwareInfoService")
+public class SoftwareInfoServiceImpl implements ISoftwareInfoService {
 
 	private static Logger logger = Logger.getLogger(SoftwareInfoServiceImpl.class);
-	
+
+	@Autowired
 	private ISoftwareInfoDao iSoftwareInfoDao;
-	
-	@WebResult(name="return",targetNamespace="http://SoftwareInfoService.service.analysis.tsinghua.com/")
+
+	@WebResult(name = "return", targetNamespace = "http://softwareInfoService.service.analysis.tsinghua.com/")
 	@WebMethod
 	@Override
 	public String getInfo(String param) {
@@ -33,7 +35,7 @@ public class SoftwareInfoServiceImpl implements ISoftwareInfoService{
 			info = iSoftwareInfoDao.selectByPrimaryKey(Integer.parseInt(id.getPrimaryKey()));
 			SoftwareInfoVO infoVo = new SoftwareInfoVO(info.getMessage());
 			resultJson = infoVo.toJson(infoVo);
-		} catch (NumberFormatException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());
 			return ResultJson.error(null);

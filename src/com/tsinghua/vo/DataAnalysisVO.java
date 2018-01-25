@@ -9,6 +9,7 @@ import com.tsinghua.analysis.model.DataAnalysis;
 
 import net.sf.json.JSONObject;
 
+/*存储数据交互模型*/
 public class DataAnalysisVO {
 
 	/* 数据主键 */
@@ -265,7 +266,7 @@ public class DataAnalysisVO {
 	/* 运营商名称 */
 	private String carrier;
 
-	/* null_value */
+	/*Cell id,null_value*/
 //	private String lcid;
 
 	/* 基站标识 */
@@ -714,7 +715,7 @@ public class DataAnalysisVO {
 		gpsLatitudeFive = obj.getString("gpsLatitudeFive");
 		accelerometerData = obj.getString("accelerometerData");
 		instanDownloadSpeed = obj.getString("instanDownloadSpeed");
-		userScore = obj.getString("userScore");
+		userScore = obj.getString("Equality");
 		saveDate = new Date();
 		userTel = obj.getString("PhoneNum");
 		Eloading = obj.getString("Eloading");

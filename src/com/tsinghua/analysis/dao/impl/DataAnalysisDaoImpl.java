@@ -1,5 +1,8 @@
 package com.tsinghua.analysis.dao.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -31,5 +34,10 @@ public class DataAnalysisDaoImpl implements IDataAnalysisDao{
 	@Override
 	public DataAnalysis selectByPrimaryKey(String daid) {
 		return sqlSessionTemplate.getMapper(IDataAnalysisDao.class).selectByPrimaryKey(daid);
+	}
+
+	@Override
+	public List<DataAnalysis> selectRecord(Map<String, Object> map) {
+		return sqlSessionTemplate.getMapper(IDataAnalysisDao.class).selectRecord(map);
 	}
 }

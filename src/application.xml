@@ -160,4 +160,19 @@
 		implementor="com.tsinghua.analysis.service.impl.SoftwareInfoServiceImpl"
 		address="/SoftwareInfoService">
 	</jaxws:endpoint>
+	<!-- 查询个体测试记录 -->
+	<jaxws:endpoint id="QueryRecordService"
+		implementor="com.tsinghua.analysis.service.impl.QueryRecordServiceImpl"
+		address="/QueryRecordService">
+	</jaxws:endpoint>
+	<!-- 删除某条数据 -->
+	<jaxws:endpoint id="HideDataService"
+		implementor="com.tsinghua.analysis.service.impl.HideDataServiceImpl"
+		address="/HideDataService">
+	</jaxws:endpoint>
+	<!-- 查询个体数据地图详情 -->
+	<jaxws:endpoint id="QueryMapService"
+		implementor="com.tsinghua.analysis.service.impl.QueryMapServiceImpl"
+		address="/QueryMapService">
+	</jaxws:endpoint>
 </beans>

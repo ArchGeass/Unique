@@ -4,6 +4,7 @@ import com.tsinghua.enums.StatusCode;
 
 import net.sf.json.JSONObject;
 
+/*标准数据返回模型*/
 public class ResultJson {
 
 	public static String success(JSONObject json){

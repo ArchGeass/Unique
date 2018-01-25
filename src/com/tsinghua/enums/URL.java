@@ -1,5 +1,6 @@
 package com.tsinghua.enums;
 
+/*返回视频URL枚举*/
 public enum URL {
 	
 	IPAddress("http://ip:port/address");

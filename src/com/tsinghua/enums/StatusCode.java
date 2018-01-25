@@ -1,5 +1,6 @@
 package com.tsinghua.enums;
 
+/*状态提示枚举*/
 public enum StatusCode {
 
 	SUCCESS_CODE("200"),

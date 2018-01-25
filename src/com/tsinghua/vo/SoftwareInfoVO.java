@@ -2,6 +2,7 @@ package com.tsinghua.vo;
 
 import net.sf.json.JSONObject;
 
+/*软件信息交互模型*/
 public class SoftwareInfoVO {
 
 	/*内容*/

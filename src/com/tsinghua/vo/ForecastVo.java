@@ -6,6 +6,7 @@ import com.tsinghua.analysis.model.DataAnalysis;
 
 import net.sf.json.JSONObject;
 
+/*预测分数交互模型*/
 public class ForecastVo {
 
 	/*预测分数*/

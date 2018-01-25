@@ -31,8 +31,6 @@ public class DataAnalysisServiceImpl implements IDataAnalysisService{
 	@WebMethod
 	@Override
 	public String insertData(String param) {
-//		JSONArray jsonArray = JSONArray.fromObject(param).getString(0);  
-//		String log = jsonArray.getString(0);
 		try {
 			DataAnalysisVO analysisData = new DataAnalysisVO(JSONArray.fromObject(param).getString(0));
 			DataAnalysis analysisModel = analysisData.saveModel(analysisData);

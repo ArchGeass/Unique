@@ -261,7 +261,7 @@ public class DataAnalysis {
 	/*运营商名称*/
 	private String carrier;
 
-	/*null_value*/
+	/*Cell id,null_value*/
 	private String lcid;
 
 	/*基站标识*/
