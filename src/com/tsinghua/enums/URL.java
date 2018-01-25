@@ -3,7 +3,7 @@ package com.tsinghua.enums;
 /*返回视频URL枚举*/
 public enum URL {
 	
-	IPAddress("http://ip:port/address");
+	IPAddress("http://120.78.196.224:80/DataAnalysis/video1/");
 	
 	private String message;
 	

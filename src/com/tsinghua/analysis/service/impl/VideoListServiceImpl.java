@@ -33,7 +33,7 @@ public class VideoListServiceImpl implements IVideoListService{
 		try {
 			videoList = iVideoListDao.getAllVideoName();
 			for(int i = 0; i < videoList.size(); i++){
-				videoList.set(i, URL.IPAddress + videoList.get(i));
+				videoList.set(i, URL.IPAddress.getMessage() + videoList.get(i));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

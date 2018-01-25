@@ -1,5 +1,6 @@
 package com.tsinghua.analysis.service.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,11 +53,12 @@ public class QueryRecordServiceImpl implements IQueryRecordService {
 		if (list.size() == 0) {
 			return ResultJson.error(null);
 		}
+		SimpleDateFormat dd = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
 		for (DataAnalysis data : list) {
 			// 无预测分数的数据不进行展示
 			if (data.getForecastScore() != null && !data.getForecastScore().isEmpty()) {
 				resultJson.put("uuid", data.getDaId());
-				resultJson.put("videoStartTime", data.getStartTime());
+				resultJson.put("videoStartTime", dd.format(data.getStartTime()));
 				score = Double.parseDouble(data.getForecastScore());
 				if (score > 3) {
 					resultJson.put("status", "良好");
