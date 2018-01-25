@@ -10,8 +10,8 @@ import javax.jws.WebService;
  * @author sunchenlong
  * @time:2018年1月19日14点17分
  */
-@WebService(targetNamespace = "http://queryScore.service.analysis.tsinghua.com/", name = "IqueryScoreService", serviceName = "IqueryScoreService")
-public interface IqueryScoreService {
+@WebService(targetNamespace = "http://queryScore.service.analysis.tsinghua.com/", name = "IQueryScoreService", serviceName = "IQueryScoreService")
+public interface IQueryScoreService {
 
 	@WebResult(name="return",targetNamespace="http://queryScore.service.analysis.tsinghua.com/")
 	@WebMethod
