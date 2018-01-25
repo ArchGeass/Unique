@@ -13,7 +13,6 @@ import com.tsinghua.analysis.service.IScoreSuggestService;
 import com.tsinghua.utils.ResultJson;
 import com.tsinghua.vo.ScoreSuggestVO;
 
-import net.sf.json.JSONObject;
 
 @WebService(targetNamespace = "http://scoreSuggest.service.analysis.tsinghua.com/", name = "IScoreSuggestService", serviceName = "IScoreSuggestService")
 public class ScoreSuggestServiceImpl implements IScoreSuggestService{
@@ -29,7 +28,6 @@ public class ScoreSuggestServiceImpl implements IScoreSuggestService{
 	public String suggest(String param) {
 		ScoreSuggestVO vo = new ScoreSuggestVO(param);
 		DataAnalysis analysisModel = vo.updateSuggest(vo);
-		JSONObject resultJson = new JSONObject();
 		try {
 			iDataAnalysisDao.updateByPrimaryKeySelective(analysisModel);
 		} catch (Exception e) {
@@ -37,7 +35,7 @@ public class ScoreSuggestServiceImpl implements IScoreSuggestService{
 			logger.error(e.getMessage());
 			return ResultJson.error(null);
 		}
-		return ResultJson.success(resultJson);
+		return ResultJson.success(null);
 	}
 
 }
