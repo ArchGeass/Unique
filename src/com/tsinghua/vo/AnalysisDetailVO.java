@@ -1060,95 +1060,103 @@ public class AnalysisDetailVO {
 	}
 	
 	public JSONObject toJson(AnalysisDetailVO vo){
-		JSONObject json = new JSONObject();
-		json.put("screenResolutionLong", vo.getScreenResolutionLong() + "");
-		json.put("screenResolutionWidth", vo.getScreenResolutionWidth() + "");
-		json.put("videoClarity", vo.getVideoClarity() + "");
-		json.put("videoCodingFormat", vo.getVideoCodingFormat() + "");
-		json.put("videoBitrate", vo.getVideoBitrate() + "");
-		json.put("bufferingDelay", vo.getBufferingDelay() + "");
-		json.put("videoPeakRate", vo.getVideoPeakRate() + "");
-		json.put("videoKaNum", vo.getVideoKaNum() + "");
-		json.put("videoKaTotalTime", vo.getVideoKaTotalTime() + "");
-		json.put("kaDurationProportion", vo.getKaDurationProportion() + "");
-		json.put("kaDurationLongOne", vo.getKaDurationLongOne() + "");
-		json.put("kaDurationLongPointOne", vo.getKaDurationLongPointOne() + "");
-		json.put("kaDurationLongTwo", vo.getKaDurationLongTwo() + "");
-		json.put("kaDurationLongPointTwo", vo.getKaDurationLongPointTwo() + "");
-		json.put("kaDurationLongThree", vo.getKaDurationLongThree() + "");
-		json.put("kaDurationLongPointThree", vo.getKaDurationLongPointThree() + "");
-		json.put("kaDurationLongFour", vo.getKaDurationLongFour() + "");
-		json.put("kaDurationLongPointFour", vo.getKaDurationLongPointFour() + "");
-		json.put("kaDurationLongFive", vo.getKaDurationLongFive() + "");
-		json.put("kaDurationLongPointFive", vo.getKaDurationLongPointFive() + "");
-		json.put("kaDurationLongSix", vo.getKaDurationLongSix() + "");
-		json.put("kaDurationLongPointSix", vo.getKaDurationLongPointSix() + "");
-		json.put("kaDurationLongSeven", vo.getKaDurationLongSeven() + "");
-		json.put("kaDurationLongPointSeven", vo.getKaDurationLongPointSeven() + "");
-		json.put("kaDurationLongEight", vo.getKaDurationLongEight() + "");
-		json.put("kaDurationLongPointEight", vo.getKaDurationLongPointEight() + "");
-		json.put("kaDurationLongNine", vo.getKaDurationLongNine() + "");
-		json.put("kaDurationLongPointNine", vo.getKaDurationLongPointNine() + "");
-		json.put("kaDurationLongTen", vo.getKaDurationLongTen() + "");
-		json.put("kaDurationLongPointTen", vo.getKaDurationLongPointTen() + "");
-		json.put("videoTotalTime", vo.getVideoTotalTime() + "");
-		json.put("videoPlayTotalTime", vo.getVideoPlayTotalTime() + "");
-		json.put("videoAllPeakRate", vo.getVideoAllPeakRate() + "");
-		json.put("videoAveragePeakRate", vo.getVideoAveragePeakRate() + "");
-		json.put("phonePlaceState", vo.getPhonePlaceState() + "");
-		json.put("environmentalNoise", vo.getEnvironmentalNoise() + "");
-		json.put("networkType", vo.getNetworkType() + "");
-		json.put("phoneElectricStart", vo.getPhoneElectricStart() + "");
-		json.put("phoneElectricEnd", vo.getPhoneElectricEnd() + "");
-		json.put("signalStrength", vo.getSignalStrength() + "");
-		json.put("phoneVersion", vo.getPhoneVersion() + "");
-		json.put("operatingSystem", vo.getOperatingSystem() + "");
-		json.put("gpsLongitudeOne", vo.getGpsLongitudeOne() + "");
-		json.put("gpsLatitudeOne", vo.getGpsLatitudeOne() + "");
-		json.put("gpsLongitudeTwo", vo.getGpsLongitudeTwo() + "");
-		json.put("gpsLatitudeTwo", vo.getGpsLatitudeTwo() + "");
-		json.put("gpsLongitudeThree", vo.getGpsLongitudeThree() + "");
-		json.put("gpsLatitudeThree", vo.getGpsLatitudeThree() + "");
-		json.put("gpsLongitudeFour", vo.getGpsLongitudeFour() + "");
-		json.put("gpsLatitudeFour", vo.getGpsLatitudeFour() + "");
-		json.put("gpsLongitudeFive", vo.getGpsLongitudeFive() + "");
-		json.put("gpsLatitudeFive", vo.getGpsLatitudeFive() + "");
-		json.put("Equality", vo.getUserScore() + "");
-		json.put("saveDate", vo.getSaveDate() + "");
-		json.put("PhoneNum", vo.getUserTel() + "");
-		json.put("Eloading", vo.getEloading() + "");
-		json.put("Estalling", vo.getEstalling() + "");
-		json.put("EvMos", vo.getEvMos() + "");
-		json.put("Cid", vo.getCid() + "");
-		json.put("Lac", vo.getLac() + "");
-		json.put("userScene", vo.getUserScene() + "");
-		json.put("VideoServerIP", vo.getVideoServerIp() + "");
-		json.put("VideoServerLocation", vo.getVideoServerLocation() + "");
-		json.put("Country", vo.getCountry() + "");
-		json.put("Province", vo.getProvince() + "");
-		json.put("City", vo.getCity() + "");
-		json.put("address", vo.getAddress() + "");
-		json.put("UEInternalIP", vo.getUeInternalIp() + "");
-		json.put("Elight", vo.getElight() + "");
-		json.put("Estate", vo.getEstate() + "");
-		json.put("PLMN", vo.getPlmn() + "");
-		json.put("IMSI", vo.getImsi() + "");
-		json.put("UDID", vo.getUdid() + "");
-		json.put("MCC", vo.getMcc() + "");
-		json.put("MNC", vo.getMnc() + "");
-		json.put("CellSignalStrength", vo.getCellSignalStrength() + "");
-		json.put("SINR", vo.getSinr() + "");
-		json.put("PingAvgRTT", vo.getPingAvgRtt() + "");
-		json.put("Carrier", vo.getCarrier() + "");
-		json.put("lcid", vo.getLcid() + "");
-		json.put("ENodeBID", vo.getEnodebId() + "");
-		json.put("PlayWay", vo.getPlayWay() + "");
-		json.put("startTime", vo.getStartTime() + "");
-		json.put("videoSize", vo.getVideoSize() + "");
-		json.put("videoName", vo.getVideoName() + "");
-		json.put("userBufferTime", vo.getUserBufferTime() + "");
-		json.put("scoreSuggest", vo.getScoreSuggest() + "");
-		return json;
+		JSONObject allJson = new JSONObject();
+		JSONObject experienceJson = new JSONObject();//视频体验得分-->1
+		JSONObject mainIndicatorsJson = new JSONObject();//主要视频体验指标-->2
+		JSONObject fullIndicatorsJson = new JSONObject();//完整视频体验指标-->3
+		JSONObject otherJson = new JSONObject();//设备&其它信息-->4
+		allJson.put("videoExperienceScore", experienceJson);
+		allJson.put("mainVideoExperienceIndicators", mainIndicatorsJson);
+		allJson.put("fullVideoExperienceMetrics", fullIndicatorsJson);
+		allJson.put("otherInformation", otherJson);
+//		json.put("screenResolutionLong", vo.getScreenResolutionLong() + "");
+//		json.put("screenResolutionWidth", vo.getScreenResolutionWidth() + "");
+		otherJson.put("videoClarity", vo.getVideoClarity() + "");//4
+		otherJson.put("videoCodingFormat", vo.getVideoCodingFormat() + "");//4
+		mainIndicatorsJson.put("videoBitrate", vo.getVideoBitrate() + "");//2-5
+//		json.put("bufferingDelay", vo.getBufferingDelay() + "");
+		fullIndicatorsJson.put("videoPeakRate", vo.getVideoPeakRate() + "");//3-2
+		fullIndicatorsJson.put("videoKaNum", vo.getVideoKaNum() + "");//3-8
+		fullIndicatorsJson.put("videoKaTotalTime", vo.getVideoKaTotalTime() + "");//3-9
+		mainIndicatorsJson.put("kaDurationProportion", vo.getKaDurationProportion() + "");//2-4
+//		json.put("kaDurationLongOne", vo.getKaDurationLongOne() + "");
+//		json.put("kaDurationLongPointOne", vo.getKaDurationLongPointOne() + "");
+//		json.put("kaDurationLongTwo", vo.getKaDurationLongTwo() + "");
+//		json.put("kaDurationLongPointTwo", vo.getKaDurationLongPointTwo() + "");
+//		json.put("kaDurationLongThree", vo.getKaDurationLongThree() + "");
+//		json.put("kaDurationLongPointThree", vo.getKaDurationLongPointThree() + "");
+//		json.put("kaDurationLongFour", vo.getKaDurationLongFour() + "");
+//		json.put("kaDurationLongPointFour", vo.getKaDurationLongPointFour() + "");
+//		json.put("kaDurationLongFive", vo.getKaDurationLongFive() + "");
+//		json.put("kaDurationLongPointFive", vo.getKaDurationLongPointFive() + "");
+//		json.put("kaDurationLongSix", vo.getKaDurationLongSix() + "");
+//		json.put("kaDurationLongPointSix", vo.getKaDurationLongPointSix() + "");
+//		json.put("kaDurationLongSeven", vo.getKaDurationLongSeven() + "");
+//		json.put("kaDurationLongPointSeven", vo.getKaDurationLongPointSeven() + "");
+//		json.put("kaDurationLongEight", vo.getKaDurationLongEight() + "");
+//		json.put("kaDurationLongPointEight", vo.getKaDurationLongPointEight() + "");
+//		json.put("kaDurationLongNine", vo.getKaDurationLongNine() + "");
+//		json.put("kaDurationLongPointNine", vo.getKaDurationLongPointNine() + "");
+//		json.put("kaDurationLongTen", vo.getKaDurationLongTen() + "");
+//		json.put("kaDurationLongPointTen", vo.getKaDurationLongPointTen() + "");
+//		json.put("videoTotalTime", vo.getVideoTotalTime() + "");
+		fullIndicatorsJson.put("videoPlayTotalTime", vo.getVideoPlayTotalTime() + "");//3-10
+		fullIndicatorsJson.put("videoAllPeakRate", vo.getVideoAllPeakRate() + "");//3-5
+		fullIndicatorsJson.put("videoAveragePeakRate", vo.getVideoAveragePeakRate() + "");//3-6
+//		json.put("phonePlaceState", vo.getPhonePlaceState() + "");
+//		json.put("environmentalNoise", vo.getEnvironmentalNoise() + "");
+		mainIndicatorsJson.put("networkType", vo.getNetworkType() + "");//2-2
+//		json.put("phoneElectricStart", vo.getPhoneElectricStart() + "");
+//		json.put("phoneElectricEnd", vo.getPhoneElectricEnd() + "");
+		otherJson.put("signalStrength", vo.getSignalStrength() + "");//4-1
+//		json.put("phoneVersion", vo.getPhoneVersion() + "");
+//		json.put("operatingSystem", vo.getOperatingSystem() + "");
+//		json.put("gpsLongitudeOne", vo.getGpsLongitudeOne() + "");
+//		json.put("gpsLatitudeOne", vo.getGpsLatitudeOne() + "");
+//		json.put("gpsLongitudeTwo", vo.getGpsLongitudeTwo() + "");
+//		json.put("gpsLatitudeTwo", vo.getGpsLatitudeTwo() + "");
+//		json.put("gpsLongitudeThree", vo.getGpsLongitudeThree() + "");
+//		json.put("gpsLatitudeThree", vo.getGpsLatitudeThree() + "");
+//		json.put("gpsLongitudeFour", vo.getGpsLongitudeFour() + "");
+//		json.put("gpsLatitudeFour", vo.getGpsLatitudeFour() + "");
+//		json.put("gpsLongitudeFive", vo.getGpsLongitudeFive() + "");
+//		json.put("gpsLatitudeFive", vo.getGpsLatitudeFive() + "");
+		experienceJson.put("Equality", vo.getUserScore() + "");//1-2
+//		json.put("saveDate", vo.getSaveDate() + "");
+//		json.put("PhoneNum", vo.getUserTel() + "");
+		experienceJson.put("Eloading", vo.getEloading() + "");//1-3
+		experienceJson.put("Estalling", vo.getEstalling() + "");//1-4
+		experienceJson.put("EvMos", vo.getEvMos() + "");//1-1
+		otherJson.put("Cid", vo.getCid() + "");//4
+		otherJson.put("Lac", vo.getLac() + "");//4
+		mainIndicatorsJson.put("userScene", vo.getUserScene() + "");//2-7
+//		json.put("VideoServerIP", vo.getVideoServerIp() + "");
+		fullIndicatorsJson.put("VideoServerLocation", vo.getVideoServerLocation() + "");//3-12
+//		json.put("Country", vo.getCountry() + "");
+//		json.put("Province", vo.getProvince() + "");
+//		json.put("City", vo.getCity() + "");
+		otherJson.put("address", vo.getAddress() + "");//4-4
+//		json.put("UEInternalIP", vo.getUeInternalIp() + "");
+//		json.put("Elight", vo.getElight() + "");
+//		json.put("Estate", vo.getEstate() + "");
+//		json.put("PLMN", vo.getPlmn() + "");
+//		json.put("IMSI", vo.getImsi() + "");
+//		json.put("UDID", vo.getUdid() + "");
+//		json.put("MCC", vo.getMcc() + "");
+//		json.put("MNC", vo.getMnc() + "");
+//		json.put("CellSignalStrength", vo.getCellSignalStrength() + "");
+//		json.put("SINR", vo.getSinr() + "");
+		fullIndicatorsJson.put("PingAvgRTT", vo.getPingAvgRtt() + "");//3-11
+		otherJson.put("Carrier", vo.getCarrier() + "");//4-1
+//		json.put("lcid", vo.getLcid() + "");
+//		json.put("ENodeBID", vo.getEnodebId() + "");
+//		json.put("PlayWay", vo.getPlayWay() + "");
+		mainIndicatorsJson.put("videoStartTime", vo.getStartTime() + "");//2-1
+//		json.put("videoSize", vo.getVideoSize() + "");
+//		json.put("videoName", vo.getVideoName() + "");
+		mainIndicatorsJson.put("userBufferTime", vo.getUserBufferTime() + "");//2-3
+//		json.put("scoreSuggest", vo.getScoreSuggest() + "");
+		return allJson;
 	}
 	
 	/*计算平均信号强度*/

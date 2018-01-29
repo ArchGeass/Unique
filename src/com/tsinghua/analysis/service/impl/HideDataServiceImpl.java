@@ -13,6 +13,8 @@ import com.tsinghua.analysis.service.IHideDataService;
 import com.tsinghua.utils.ResultJson;
 import com.tsinghua.vo.DataId;
 
+import net.sf.json.JSONArray;
+
 @WebService(targetNamespace = "http://hideService.service.analysis.tsinghua.com/", name = "IHideDataService", serviceName = "IHideDataService")
 public class HideDataServiceImpl implements IHideDataService{
 
@@ -25,7 +27,7 @@ public class HideDataServiceImpl implements IHideDataService{
 	@WebMethod
 	@Override
 	public String hide(String param) {
-		DataId id = new DataId(param);
+		DataId id = new DataId(JSONArray.fromObject(param).getString(0));
 		DataAnalysis data = new DataAnalysis();
 		data.setDaId(id.getPrimaryKey());
 		data.setDisplay("0");

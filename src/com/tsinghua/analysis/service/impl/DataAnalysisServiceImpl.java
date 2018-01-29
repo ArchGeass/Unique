@@ -20,31 +20,33 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 @WebService(targetNamespace = "http://analysis.interfaces.service.webservice.tsinghua.com/", name = "IDataAnalysisService", serviceName = "IDataAnalysisService")
-public class DataAnalysisServiceImpl implements IDataAnalysisService{
+public class DataAnalysisServiceImpl implements IDataAnalysisService {
 
 	private static Logger logger = Logger.getLogger(DataAnalysisServiceImpl.class);
-	
+
 	@Autowired
 	private IDataAnalysisDao iDataAnalysisDao;
-	
-	@WebResult(name="return",targetNamespace="http://analysis.interfaces.service.webservice.tsinghua.com/")
+
+	@WebResult(name = "return", targetNamespace = "http://analysis.interfaces.service.webservice.tsinghua.com/")
 	@WebMethod
 	@Override
 	public String insertData(String param) {
 		try {
 			DataAnalysisVO analysisData = new DataAnalysisVO(JSONArray.fromObject(param).getString(0));
 			DataAnalysis analysisModel = analysisData.saveModel(analysisData);
-//			DataAnalysis analysisModel = new DataAnalysis();
-//			BeanUtils.copyProperties(analysisData, analysisModel);//尝试使用copy方法
+			// DataAnalysis analysisModel = new DataAnalysis();
+			// BeanUtils.copyProperties(analysisData,
+			// analysisModel);//尝试使用copy方法
 			String uuid = UUID.randomUUID().toString();
-			analysisModel.setDaId(uuid);//设置数据id
-			analysisModel.setDisplay("1");//设置为展示
+			analysisModel.setDaId(uuid);// 设置数据id
+			analysisModel.setDisplay("1");// 设置为展示
 			iDataAnalysisDao.insert(analysisModel);
 			JSONObject resultJson = new JSONObject();
-			resultJson.put("forecastScore", "3");//预测分数
-			resultJson.put("networkStatus", "57%");//网络状态
-			resultJson.put("location", "江苏南通崇川区工农路6号");//地理位置
-			resultJson.put("testDate", "2017.08.02 15:25");//测试时间
+			resultJson.put("uuid", uuid);// 数据id
+			resultJson.put("forecastScore", "3");// 预测分数
+			resultJson.put("networkStatus", "网络状态一般\n打败了全国57%的用户");// 网络状态
+			resultJson.put("location", "江苏南通崇川区工农路6号");// 地理位置
+			resultJson.put("testDate", "2017.08.02 15:25");// 测试时间
 			return ResultJson.success(resultJson);
 		} catch (Exception e) {
 			e.printStackTrace();

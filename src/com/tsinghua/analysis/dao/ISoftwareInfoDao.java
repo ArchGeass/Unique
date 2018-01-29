@@ -4,5 +4,5 @@ import com.tsinghua.analysis.model.SoftwareInfo;
 
 public interface ISoftwareInfoDao {
 
-	public SoftwareInfo selectByPrimaryKey(Integer id);
+	SoftwareInfo selectByPrimaryKey(Integer id);
 }

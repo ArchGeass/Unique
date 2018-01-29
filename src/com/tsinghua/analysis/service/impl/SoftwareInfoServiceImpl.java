@@ -11,9 +11,9 @@ import com.tsinghua.analysis.dao.ISoftwareInfoDao;
 import com.tsinghua.analysis.model.SoftwareInfo;
 import com.tsinghua.analysis.service.ISoftwareInfoService;
 import com.tsinghua.utils.ResultJson;
-import com.tsinghua.vo.DataId;
 import com.tsinghua.vo.SoftwareInfoVO;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 @WebService(targetNamespace = "http://softwareInfoService.service.analysis.tsinghua.com/", name = "ISoftwareInfoService", serviceName = "ISoftwareInfoService")
@@ -28,11 +28,12 @@ public class SoftwareInfoServiceImpl implements ISoftwareInfoService {
 	@WebMethod
 	@Override
 	public String getInfo(String param) {
-		DataId id = new DataId(param);
+		JSONObject obj = JSONObject.fromObject(JSONArray.fromObject(param).getString(0));
+		String mark = obj.getString("mark");
 		SoftwareInfo info = new SoftwareInfo();
 		JSONObject resultJson = new JSONObject();
 		try {
-			info = iSoftwareInfoDao.selectByPrimaryKey(Integer.parseInt(id.getPrimaryKey()));
+			info = iSoftwareInfoDao.selectByPrimaryKey(Integer.parseInt(mark));
 			SoftwareInfoVO infoVo = new SoftwareInfoVO(info.getMessage());
 			resultJson = infoVo.toJson(infoVo);
 		} catch (Exception e) {

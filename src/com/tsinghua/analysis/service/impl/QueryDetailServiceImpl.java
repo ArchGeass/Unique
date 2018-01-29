@@ -14,6 +14,7 @@ import com.tsinghua.utils.ResultJson;
 import com.tsinghua.vo.AnalysisDetailVO;
 import com.tsinghua.vo.DataId;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 @WebService(targetNamespace = "http://detailService.service.analysis.tsinghua.com/", name = "IQueryDetailService", serviceName = "IQueryDetailService")
@@ -28,7 +29,7 @@ public class QueryDetailServiceImpl implements IQueryDetailService{
 	@WebMethod
 	@Override
 	public String detail(String param) {
-		DataId id = new DataId(param);
+		DataId id = new DataId(JSONArray.fromObject(param).getString(0));
 		JSONObject resultJson = new JSONObject();
 		AnalysisDetailVO advo = new AnalysisDetailVO();
 		DataAnalysis analysisModel = new DataAnalysis();

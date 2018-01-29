@@ -11,7 +11,7 @@ public class ResultJson {
 		JSONObject resultJson = new JSONObject();
 		resultJson.put("code", StatusCode.SUCCESS_CODE.getMessage());
 		resultJson.put("message", StatusCode.SUCCESS_MESSAGE.getMessage());
-		resultJson.put("resultjson", json);
+		resultJson.put("success_response_data", json);
 		return resultJson.toString();
 	}
 	
@@ -19,7 +19,7 @@ public class ResultJson {
 		JSONObject resultJson = new JSONObject();
 		resultJson.put("code", StatusCode.FAIL_CODE.getMessage());
 		resultJson.put("message", StatusCode.FAIL_MESSAGE.getMessage());
-		resultJson.put("resultjson", json);
+		resultJson.put("success_response_data", json);
 		return resultJson.toString();
 	}
 }

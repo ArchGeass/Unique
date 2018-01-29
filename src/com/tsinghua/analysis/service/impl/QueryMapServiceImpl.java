@@ -17,6 +17,7 @@ import com.tsinghua.analysis.service.IQueryMapService;
 import com.tsinghua.utils.ResultJson;
 import com.tsinghua.vo.RecordVO;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 @WebService(targetNamespace = "http://mapService.service.analysis.tsinghua.com/", name = "IQueryMapService", serviceName = "IQueryMapService")
@@ -31,22 +32,29 @@ public class QueryMapServiceImpl implements IQueryMapService {
 	@WebMethod
 	@Override
 	public String map(String param) {
-		RecordVO vo = new RecordVO(param);
+		RecordVO vo = new RecordVO(JSONArray.fromObject(param).getString(0));
 		Map<String, Object> map = new HashMap<String, Object>();
 		List<DataAnalysis> list = null;
 		JSONObject resultJson = new JSONObject();
 		try {
 			if (vo.getSign().equals("1")) {
-				map.put("udid", vo.getUuid());
+				map.put("udid", vo.getSole());
 				list = iDataAnalysisDao.selectRecord(map);
 			} else {
-				map.put("imsi", vo.getUuid());
+				map.put("imsi", vo.getSole());
 				list = iDataAnalysisDao.selectRecord(map);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error(e.getMessage());
 			return ResultJson.error(null);
+		}
+		for (DataAnalysis data : list) {
+			/*if(end-start <= 200){
+				address = avg_gps;
+			}else{
+				jsonreturn alladdress;
+			}*/
 		}
 		return ResultJson.success(resultJson);
 	}

@@ -9,18 +9,28 @@ import net.sf.json.JSONObject;
 /*预测分数交互模型*/
 public class ForecastVo {
 
-	/*预测分数*/
+	private String uuid;
+
+	/* 预测分数 */
 	private String forecastScore;
-	
-	/*网络状态*/
+
+	/* 网络状态 */
 	private String networkStatus;
-	
-	/*地理位置*/
+
+	/* 地理位置 */
 	private String location;
-	
-	/*测试时间*/
+
+	/* 测试时间 */
 	private String testDate;
-	
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
+
 	public String getForecastScore() {
 		return forecastScore;
 	}
@@ -53,8 +63,9 @@ public class ForecastVo {
 		this.testDate = testDate;
 	}
 
-	public ForecastVo getScore(DataAnalysis data){
+	public ForecastVo getScore(DataAnalysis data) {
 		ForecastVo fv = new ForecastVo();
+		fv.setUuid(data.getDaId());
 		fv.forecastScore = data.getForecastScore();
 		fv.networkStatus = data.getNetworkStatus();
 		fv.location = data.getAddress();
@@ -62,11 +73,13 @@ public class ForecastVo {
 		fv.testDate = dd.format(data.getStartTime());
 		return fv;
 	}
-	
+
 	public JSONObject toJson(ForecastVo vo) {
 		JSONObject json = new JSONObject();
+		json.put("uuid", vo.getUuid());// 数据id
 		json.put("forecastScore", vo.getForecastScore());
-		json.put("networkStatus", vo.getNetworkStatus());
+		//need网络状态判断标准
+		json.put("networkStatus", "网络状态一般\n打败了全国" + vo.getNetworkStatus() + "的用户");
 		json.put("location", vo.getLocation());
 		json.put("testDate", vo.getTestDate());
 		return json;

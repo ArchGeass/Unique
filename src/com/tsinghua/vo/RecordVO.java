@@ -8,7 +8,7 @@ public class RecordVO {
 	private String sign;
 	
 	/*手机唯一性标识*/
-	private String uuid;
+	private String sole;
 
 	public String getSign() {
 		return sign;
@@ -17,17 +17,18 @@ public class RecordVO {
 	public void setSign(String sign) {
 		this.sign = sign;
 	}
-
-	public String getUuid() {
-		return uuid;
+	
+	public String getSole() {
+		return sole;
 	}
 
-	public void setUuid(String uuid) {
-		this.uuid = uuid;
+	public void setSole(String sole) {
+		this.sole = sole;
 	}
+
 	public RecordVO(String param){
 		JSONObject obj = JSONObject.fromObject(param);
-		uuid = obj.getString("uuid");
+		sole = obj.getString("uuid");
 		sign = obj.getString("sign");
 	}
 }

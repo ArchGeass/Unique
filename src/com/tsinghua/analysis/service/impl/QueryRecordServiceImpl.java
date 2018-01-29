@@ -1,6 +1,7 @@
 package com.tsinghua.analysis.service.impl;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,7 @@ import com.tsinghua.analysis.service.IQueryRecordService;
 import com.tsinghua.utils.ResultJson;
 import com.tsinghua.vo.RecordVO;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 @WebService(targetNamespace = "http://recordService.service.analysis.tsinghua.com/", name = "IQueryRecordService", serviceName = "IQueryRecordService")
@@ -32,16 +34,16 @@ public class QueryRecordServiceImpl implements IQueryRecordService {
 	@WebMethod
 	@Override
 	public String record(String param) {
-		RecordVO vo = new RecordVO(param);
+		RecordVO vo = new RecordVO(JSONArray.fromObject(param).getString(0));
 		Map<String, Object> map = new HashMap<String, Object>();
 		List<DataAnalysis> list = null;
 		JSONObject resultJson = new JSONObject();
 		try {
 			if (vo.getSign().equals("1")) {
-				map.put("udid", vo.getUuid());
+				map.put("udid", vo.getSole());
 				list = iDataAnalysisDao.selectRecord(map);
 			} else {
-				map.put("imsi", vo.getUuid());
+				map.put("imsi", vo.getSole());
 				list = iDataAnalysisDao.selectRecord(map);
 			}
 		} catch (Exception e) {
@@ -53,22 +55,26 @@ public class QueryRecordServiceImpl implements IQueryRecordService {
 		if (list.size() == 0) {
 			return ResultJson.error(null);
 		}
+		List<JSONObject> recordList = new ArrayList<JSONObject>();
 		SimpleDateFormat dd = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
 		for (DataAnalysis data : list) {
 			// 无预测分数的数据不进行展示
 			if (data.getForecastScore() != null && !data.getForecastScore().isEmpty()) {
-				resultJson.put("uuid", data.getDaId());
-				resultJson.put("videoStartTime", dd.format(data.getStartTime()));
+				JSONObject tempJson = new JSONObject();
+				tempJson.put("uuid", data.getDaId());
+				tempJson.put("videoStartTime", dd.format(data.getStartTime()));
 				score = Double.parseDouble(data.getForecastScore());
 				if (score > 3) {
-					resultJson.put("status", "良好");
+					tempJson.put("status", "良好");
 				} else if (score > 1) {
-					resultJson.put("status", "一般");
+					tempJson.put("status", "一般");
 				} else {
-					resultJson.put("status", "较差");
+					tempJson.put("status", "较差");
 				}
+				recordList.add(tempJson);
 			}
 		}
+		resultJson.put("resultJson", recordList.toString());
 		return ResultJson.success(resultJson);
 	}
 

@@ -41,12 +41,12 @@ public class VideoListServiceImpl implements IVideoListService{
 			return ResultJson.error(null);
 		}
 		resultJson.put("videoUrl", videoList);
-//		return ResultJson.success(resultJson);
-		JSONObject jsonObj = new JSONObject();
-		jsonObj.put("code", "200");
-		jsonObj.put("message", "请求成功");
-		jsonObj.put("success_response_data", resultJson);
-		return jsonObj.toString();
+		return ResultJson.success(resultJson);
+//		JSONObject jsonObj = new JSONObject();
+//		jsonObj.put("code", "200");
+//		jsonObj.put("message", "请求成功");
+//		jsonObj.put("success_response_data", resultJson);
+//		return jsonObj.toString();
 	}
 
 }

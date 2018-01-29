@@ -13,6 +13,8 @@ import com.tsinghua.analysis.service.IScoreSuggestService;
 import com.tsinghua.utils.ResultJson;
 import com.tsinghua.vo.ScoreSuggestVO;
 
+import net.sf.json.JSONArray;
+
 
 @WebService(targetNamespace = "http://scoreSuggest.service.analysis.tsinghua.com/", name = "IScoreSuggestService", serviceName = "IScoreSuggestService")
 public class ScoreSuggestServiceImpl implements IScoreSuggestService{
@@ -26,7 +28,7 @@ public class ScoreSuggestServiceImpl implements IScoreSuggestService{
 	@WebMethod
 	@Override
 	public String suggest(String param) {
-		ScoreSuggestVO vo = new ScoreSuggestVO(param);
+		ScoreSuggestVO vo = new ScoreSuggestVO(JSONArray.fromObject(param).getString(0));
 		DataAnalysis analysisModel = vo.updateSuggest(vo);
 		try {
 			iDataAnalysisDao.updateByPrimaryKeySelective(analysisModel);

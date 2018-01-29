@@ -14,21 +14,22 @@ import com.tsinghua.utils.ResultJson;
 import com.tsinghua.vo.DataId;
 import com.tsinghua.vo.ForecastVo;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 @WebService(targetNamespace = "http://queryScore.service.analysis.tsinghua.com/", name = "IqueryScoreService", serviceName = "IqueryScoreService")
-public class QueryScoreServiceImpl implements IQueryScoreService{
+public class QueryScoreServiceImpl implements IQueryScoreService {
 
 	private static Logger logger = Logger.getLogger(QueryScoreServiceImpl.class);
-	
+
 	@Autowired
 	private IDataAnalysisDao iDataAnalysisDao;
-	
-	@WebResult(name="return",targetNamespace="http://queryScore.service.analysis.tsinghua.com/")
+
+	@WebResult(name = "return", targetNamespace = "http://queryScore.service.analysis.tsinghua.com/")
 	@WebMethod
 	@Override
 	public String queryScore(String param) {
-		DataId id = new DataId(param);
+		DataId id = new DataId(JSONArray.fromObject(param).getString(0));
 		JSONObject resultJson = new JSONObject();
 		ForecastVo forecast = new ForecastVo();
 		DataAnalysis analysisModel = new DataAnalysis();
