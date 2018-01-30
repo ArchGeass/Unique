@@ -1,8 +1,11 @@
 package com.tsinghua.vo;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.tsinghua.analysis.model.DataAnalysis;
+import com.tsinghua.utils.DetailJson;
 
 import net.sf.json.JSONObject;
 
@@ -165,6 +168,9 @@ public class AnalysisDetailVO {
 	/*GPS纬度5*/
 	private String gpsLatitudeFive;
 
+	/*全程瞬时下载速率=每3s的下载量(kb)*/
+	private String instanDownloadSpeed;
+	
 	/*用户对视频清晰度的评分(5:非常好，4：良好，3：一般，2：较差，1：无法容忍)*/
 	private String userScore;
 
@@ -686,6 +692,14 @@ public class AnalysisDetailVO {
 		this.gpsLatitudeFive = gpsLatitudeFive;
 	}
 
+	public String getInstanDownloadSpeed() {
+		return instanDownloadSpeed;
+	}
+
+	public void setInstanDownloadSpeed(String instanDownloadSpeed) {
+		this.instanDownloadSpeed = instanDownloadSpeed;
+	}
+
 	public String getUserScore() {
 		return userScore;
 	}
@@ -1020,6 +1034,7 @@ public class AnalysisDetailVO {
 		advo.setGpsLatitudeFour(data.getGpsLatitudeFour());
 		advo.setGpsLongitudeFive(data.getGpsLongitudeFive());
 		advo.setGpsLatitudeFive(data.getGpsLatitudeFive());
+		advo.setInstanDownloadSpeed(data.getInstanDownloadSpeed());
 		advo.setUserScore(data.getUserScore());
 		SimpleDateFormat dd = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
 		advo.setSaveDate(dd.format(data.getSaveDate()));
@@ -1060,25 +1075,49 @@ public class AnalysisDetailVO {
 	}
 	
 	public JSONObject toJson(AnalysisDetailVO vo){
-		JSONObject allJson = new JSONObject();
-		JSONObject experienceJson = new JSONObject();//视频体验得分-->1
-		JSONObject mainIndicatorsJson = new JSONObject();//主要视频体验指标-->2
-		JSONObject fullIndicatorsJson = new JSONObject();//完整视频体验指标-->3
-		JSONObject otherJson = new JSONObject();//设备&其它信息-->4
-		allJson.put("videoExperienceScore", experienceJson);
-		allJson.put("mainVideoExperienceIndicators", mainIndicatorsJson);
-		allJson.put("fullVideoExperienceMetrics", fullIndicatorsJson);
-		allJson.put("otherInformation", otherJson);
+		JSONObject resultJson = new JSONObject();
+		DetailJson detail = new DetailJson();
+		List<String> list = new ArrayList<String>();
+		
+		list.add(detail.toString("视频服务满意度", "", 1));
+		list.add(detail.toString("综合评分EvMos",vo.getEvMos(),2));//1-1
+		list.add(detail.toString("清晰度评分",vo.getUserScore(),2));//1-2
+		list.add(detail.toString("等待时间评分",vo.getEloading(),2));//1-3
+		list.add(detail.toString("流畅度评分",vo.getEstalling(),2));//1-4
+		
+		list.add(detail.toString("视频体验关键指标", "", 1));
+		list.add(detail.toString("开始播放时间",vo.getStartTime(),2));//2-1
+		list.add(detail.toString("请求服务器时延",vo.getUserBufferTime(),2));//2-3
+		list.add(detail.toString("卡顿时长占比",vo.getKaDurationProportion(),2));//2-4
+		list.add(detail.toString("视频码率",vo.getVideoBitrate(),2));//2-5
+		list.add(detail.toString("测试场景",vo.getUserScene(),2));//2-7
+
+		list.add(detail.toString("视频体验详细指标", "", 1));
+		list.add(detail.toString("视频缓冲峰值速率(kbps)",vo.getVideoPeakRate(),2));//3-2
+		list.add(detail.toString("视频全程峰值速率(kbps)",vo.getVideoAllPeakRate(),2));//3-5
+		list.add(detail.toString("视频全程感知速率(kbps)",vo.getVideoAveragePeakRate(),2));//3-6
+		list.add(detail.toString("视频总卡顿次数",vo.getVideoKaNum(),2));//3-8
+		list.add(detail.toString("所有卡顿总时延(ms)",vo.getVideoKaTotalTime(),2));//3-9
+		list.add(detail.toString("视频播放总时长",vo.getVideoPlayTotalTime(),2));//3-10
+		list.add(detail.toString("视频服务器RTT(Ping Server 512B)(ms)",vo.getPingAvgRtt(),2));//3-11
+		list.add(detail.toString("视频源服务器的实际地理位置",vo.getVideoServerLocation(),2));//3-12
+
+		list.add(detail.toString("其它服务信息", "", 1));
+		list.add(detail.toString("小区标识",vo.getCid(),2));
+		list.add(detail.toString("位置区编码",vo.getLac(),2));
+		list.add(detail.toString("地址",vo.getAddress(),2));//4-4
+		list.add(detail.toString("运营商名称",vo.getCarrier(),2));//4-1
+		list.add(detail.toString("Cell id",vo.getLcid(),2));
+		list.add(detail.toString("IMSI",vo.getImsi(),2));
+		list.add(detail.toString("UDID",vo.getUdid(),2));
+		list.add(detail.toString("视频编码格式",vo.getVideoCodingFormat(),2));
+		list.add(detail.toString("视频清晰度",vo.getVideoClarity(),2));//4
+		list.add(detail.toString("信号强度",vo.getSignalStrength(),2));//4-2
+		
 //		json.put("screenResolutionLong", vo.getScreenResolutionLong() + "");
 //		json.put("screenResolutionWidth", vo.getScreenResolutionWidth() + "");
-		otherJson.put("videoClarity", vo.getVideoClarity() + "");//4
-		otherJson.put("videoCodingFormat", vo.getVideoCodingFormat() + "");//4
-		mainIndicatorsJson.put("videoBitrate", vo.getVideoBitrate() + "");//2-5
+//		otherJson.put("videoClarity", vo.getVideoClarity() + "");//4
 //		json.put("bufferingDelay", vo.getBufferingDelay() + "");
-		fullIndicatorsJson.put("videoPeakRate", vo.getVideoPeakRate() + "");//3-2
-		fullIndicatorsJson.put("videoKaNum", vo.getVideoKaNum() + "");//3-8
-		fullIndicatorsJson.put("videoKaTotalTime", vo.getVideoKaTotalTime() + "");//3-9
-		mainIndicatorsJson.put("kaDurationProportion", vo.getKaDurationProportion() + "");//2-4
 //		json.put("kaDurationLongOne", vo.getKaDurationLongOne() + "");
 //		json.put("kaDurationLongPointOne", vo.getKaDurationLongPointOne() + "");
 //		json.put("kaDurationLongTwo", vo.getKaDurationLongTwo() + "");
@@ -1100,15 +1139,11 @@ public class AnalysisDetailVO {
 //		json.put("kaDurationLongTen", vo.getKaDurationLongTen() + "");
 //		json.put("kaDurationLongPointTen", vo.getKaDurationLongPointTen() + "");
 //		json.put("videoTotalTime", vo.getVideoTotalTime() + "");
-		fullIndicatorsJson.put("videoPlayTotalTime", vo.getVideoPlayTotalTime() + "");//3-10
-		fullIndicatorsJson.put("videoAllPeakRate", vo.getVideoAllPeakRate() + "");//3-5
-		fullIndicatorsJson.put("videoAveragePeakRate", vo.getVideoAveragePeakRate() + "");//3-6
 //		json.put("phonePlaceState", vo.getPhonePlaceState() + "");
 //		json.put("environmentalNoise", vo.getEnvironmentalNoise() + "");
-		mainIndicatorsJson.put("networkType", vo.getNetworkType() + "");//2-2
+//		mainIndicatorsJson.put("networkType", vo.getNetworkType() + "");//2-2//不显示了
 //		json.put("phoneElectricStart", vo.getPhoneElectricStart() + "");
 //		json.put("phoneElectricEnd", vo.getPhoneElectricEnd() + "");
-		otherJson.put("signalStrength", vo.getSignalStrength() + "");//4-1
 //		json.put("phoneVersion", vo.getPhoneVersion() + "");
 //		json.put("operatingSystem", vo.getOperatingSystem() + "");
 //		json.put("gpsLongitudeOne", vo.getGpsLongitudeOne() + "");
@@ -1121,42 +1156,27 @@ public class AnalysisDetailVO {
 //		json.put("gpsLatitudeFour", vo.getGpsLatitudeFour() + "");
 //		json.put("gpsLongitudeFive", vo.getGpsLongitudeFive() + "");
 //		json.put("gpsLatitudeFive", vo.getGpsLatitudeFive() + "");
-		experienceJson.put("Equality", vo.getUserScore() + "");//1-2
 //		json.put("saveDate", vo.getSaveDate() + "");
 //		json.put("PhoneNum", vo.getUserTel() + "");
-		experienceJson.put("Eloading", vo.getEloading() + "");//1-3
-		experienceJson.put("Estalling", vo.getEstalling() + "");//1-4
-		experienceJson.put("EvMos", vo.getEvMos() + "");//1-1
-		otherJson.put("Cid", vo.getCid() + "");//4
-		otherJson.put("Lac", vo.getLac() + "");//4
-		mainIndicatorsJson.put("userScene", vo.getUserScene() + "");//2-7
 //		json.put("VideoServerIP", vo.getVideoServerIp() + "");
-		fullIndicatorsJson.put("VideoServerLocation", vo.getVideoServerLocation() + "");//3-12
 //		json.put("Country", vo.getCountry() + "");
 //		json.put("Province", vo.getProvince() + "");
 //		json.put("City", vo.getCity() + "");
-		otherJson.put("address", vo.getAddress() + "");//4-4
 //		json.put("UEInternalIP", vo.getUeInternalIp() + "");
 //		json.put("Elight", vo.getElight() + "");
 //		json.put("Estate", vo.getEstate() + "");
 //		json.put("PLMN", vo.getPlmn() + "");
-//		json.put("IMSI", vo.getImsi() + "");
-//		json.put("UDID", vo.getUdid() + "");
 //		json.put("MCC", vo.getMcc() + "");
 //		json.put("MNC", vo.getMnc() + "");
 //		json.put("CellSignalStrength", vo.getCellSignalStrength() + "");
 //		json.put("SINR", vo.getSinr() + "");
-		fullIndicatorsJson.put("PingAvgRTT", vo.getPingAvgRtt() + "");//3-11
-		otherJson.put("Carrier", vo.getCarrier() + "");//4-1
-//		json.put("lcid", vo.getLcid() + "");
 //		json.put("ENodeBID", vo.getEnodebId() + "");
 //		json.put("PlayWay", vo.getPlayWay() + "");
-		mainIndicatorsJson.put("videoStartTime", vo.getStartTime() + "");//2-1
 //		json.put("videoSize", vo.getVideoSize() + "");
 //		json.put("videoName", vo.getVideoName() + "");
-		mainIndicatorsJson.put("userBufferTime", vo.getUserBufferTime() + "");//2-3
 //		json.put("scoreSuggest", vo.getScoreSuggest() + "");
-		return allJson;
+		resultJson.put("resultJson", list);
+		return resultJson;
 	}
 	
 	/*计算平均信号强度*/
@@ -1164,7 +1184,7 @@ public class AnalysisDetailVO {
 		String temp = signalStrength.replace("\"","")
                 .replace("[","")
                 .replace("]","");
-		String[] strArray = temp.split(",,");
+		String[] strArray = temp.split(",");
 		Double sum = 0.0;
         Integer i = 0;
         for (String ever:strArray) {
@@ -1182,5 +1202,63 @@ public class AnalysisDetailVO {
         	avg = (int)(sum/i);
         }
 		return avg.toString();
+	}
+
+	/*初始缓冲用户感知速率(kbps)*/
+	/*(sum_of(1+...+userBufferTime/100ms)->instanDownloadSpeed)/userBufferTime*/
+	public String initialBufferUserPerceptionRate(String instanDownloadSpeed, String userBufferTime){
+		Integer count = countofuserBufferTime(userBufferTime);
+		Integer[] allInstanDownloadSpeed = instanDownloadSpeed(instanDownloadSpeed);
+		Double initial_buffering_data = 0.0;
+		for(int i = 0; i < count; i++){
+			initial_buffering_data += allInstanDownloadSpeed[i];
+		}
+		Double initialBufferUserPerceptionRate = initial_buffering_data/Double.parseDouble(userBufferTime);
+		return initialBufferUserPerceptionRate.toString();
+	}
+	
+	/*视频播放阶段感知速率(kbps)*/
+	/*((sum_of(userBufferTime/100ms+...+end)->instanDownloadSpeed)/(videoPlayTotalTime-userBufferTime)*/
+	public String videoPlaybackPhasePerceptionRate(String instanDownloadSpeed, String videoPlayTotalTime, String userBufferTime){
+		Integer[] allInstanDownloadSpeed = instanDownloadSpeed(instanDownloadSpeed);
+		Integer count = /*allInstanDownloadSpeed.length - */countofuserBufferTime(userBufferTime);
+		Double after_buffering_data = 0.0;
+		for(int i = count; i < allInstanDownloadSpeed.length; i++){
+			after_buffering_data += allInstanDownloadSpeed[i];
+		}
+		Double playing_total_time = Double.parseDouble(videoPlayTotalTime) - Double.parseDouble(userBufferTime);
+		Double videoPlaybackPhasePerceptionRate = after_buffering_data/playing_total_time;
+		return videoPlaybackPhasePerceptionRate.toString();
+	}
+	
+	/*视频单次最大缓冲时延(ms)*/
+	/*max_of(kaDurationLongOne~kaDurationLongTen)*/
+	public String videoSingleMaximumBufferingDelay(){
+		return null;
+	}
+	
+	/*将instanDownloadSpeed转换为数组*/
+	public Integer[] instanDownloadSpeed(String instanDownloadSpeed){
+		String temp = instanDownloadSpeed.replace("\"", "")
+				.replace("[", "")
+				.replace("]", "");
+		String[] strArray = temp.split(",");
+		List<Integer> intlist = new ArrayList<Integer>();
+		for (String str : strArray) {
+			if(str != null && !str.isEmpty()){
+				intlist.add(Integer.parseInt(str));
+			}
+		}
+		Integer[] result = new Integer[intlist.size()];
+		for(int i = 0; i < intlist.size(); i++){
+			result[i] = intlist.get(i);
+		}
+		return result;
+	}
+
+	/*计算userBufferTime/100ms*/
+	public Integer countofuserBufferTime(String userBufferTime){
+		Integer temp = Integer.parseInt(userBufferTime)/100;
+		return temp;
 	}
 }

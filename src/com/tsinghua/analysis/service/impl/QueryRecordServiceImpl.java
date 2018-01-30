@@ -52,9 +52,9 @@ public class QueryRecordServiceImpl implements IQueryRecordService {
 			return ResultJson.error(null);
 		}
 		Double score;
-		if (list.size() == 0) {
-			return ResultJson.error(null);
-		}
+//		if (list.size() == 0) {
+//			return ResultJson.error(null);
+//		}
 		List<JSONObject> recordList = new ArrayList<JSONObject>();
 		SimpleDateFormat dd = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
 		for (DataAnalysis data : list) {

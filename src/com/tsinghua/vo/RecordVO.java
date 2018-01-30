@@ -28,7 +28,7 @@ public class RecordVO {
 
 	public RecordVO(String param){
 		JSONObject obj = JSONObject.fromObject(param);
-		sole = obj.getString("uuid");
+		sole = obj.getString("sole");
 		sign = obj.getString("sign");
 	}
 }
