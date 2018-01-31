@@ -1,5 +1,8 @@
 package com.tsinghua.analysis.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
 import java.util.UUID;
 
 import javax.jws.WebMethod;
@@ -41,12 +44,17 @@ public class DataAnalysisServiceImpl implements IDataAnalysisService {
 			analysisModel.setDaId(uuid);// 设置数据id
 			analysisModel.setDisplay("1");// 设置为展示
 			iDataAnalysisDao.insert(analysisModel);
+			// 测试阶段生成随机数
+			Random random = new Random();
+			Integer rand = random.nextInt(5) % (5) + 1;
+			Integer rand2 = random.nextInt(90) % (10) + 1;
 			JSONObject resultJson = new JSONObject();
 			resultJson.put("uuid", uuid);// 数据id
-			resultJson.put("forecastScore", "3");// 预测分数
-			resultJson.put("networkStatus", "网络状态一般\n打败了全国57%的用户");// 网络状态
+			resultJson.put("forecastScore", rand.toString());// 预测分数
+			resultJson.put("networkStatus", "网络状态一般\n打败了全国" + rand2.toString() + "%的用户");// 网络状态
 			resultJson.put("location", "江苏南通崇川区工农路6号");// 地理位置
-			resultJson.put("testDate", "2017.08.02 15:25");// 测试时间
+			SimpleDateFormat dd = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+			resultJson.put("testDate", dd.format(new Date()));// 测试时间
 			return ResultJson.success(resultJson);
 		} catch (Exception e) {
 			e.printStackTrace();

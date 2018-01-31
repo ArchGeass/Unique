@@ -1211,7 +1211,7 @@
 	</select>
 	<select id="selectRecord" parameterType="java.lang.String"
 		resultMap="BaseResultMap">
-		select DA_ID,STARTTIME,FORECASTSCORE from DATAANALYSIS where DISPLAY =
+		select DA_ID,STARTTIME,FORECASTSCORE,GPS_LONGITUDE_ONE,GPS_LATITUDE_ONE from DATAANALYSIS where DISPLAY =
 		'1' and
 		<if test="udid != null">UDID = #{udid,jdbcType=VARCHAR}</if>
 		<if test="imsi != null">IMSI = #{imsi,jdbcType=VARCHAR}</if>

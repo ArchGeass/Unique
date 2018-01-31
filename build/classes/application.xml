@@ -175,4 +175,9 @@
 		implementor="com.tsinghua.analysis.service.impl.QueryMapServiceImpl"
 		address="/QueryMapService">
 	</jaxws:endpoint>
+	<!-- ios查询测试数据详情 -->
+	<jaxws:endpoint id="QueryIOSDetailService"
+		implementor="com.tsinghua.analysis.service.impl.QueryIOSDetailServiceImpl"
+		address="/QueryIOSDetailService">
+	</jaxws:endpoint>
 </beans>

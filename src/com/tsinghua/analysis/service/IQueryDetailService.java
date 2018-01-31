@@ -6,7 +6,7 @@ import javax.jws.WebResult;
 import javax.jws.WebService;
 
 /**
- * @description:查询测试数据详情
+ * @description:android查询测试数据详情
  * @author sunchenlong
  * @time:2018年1月19日15点58分
  */

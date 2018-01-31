@@ -17,6 +17,6 @@
 		<typeAlias type="com.pm301.commoncode.model.BsStaticData" alias="bsStaticData" /> -->
 	</typeAliases>
 	<mappers>
-		
+		<!-- <mapper resource="com/tsinghua/analysis/model/SoftwareInfoMapper.xml" /> -->
 	</mappers>
 </configuration>

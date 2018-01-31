@@ -1,6 +1,8 @@
 package com.tsinghua.vo;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
 
 import com.tsinghua.analysis.model.DataAnalysis;
 
@@ -77,11 +79,22 @@ public class ForecastVo {
 	public JSONObject toJson(ForecastVo vo) {
 		JSONObject json = new JSONObject();
 		json.put("uuid", vo.getUuid());// 数据id
-		json.put("forecastScore", vo.getForecastScore());
-		//need网络状态判断标准
-		json.put("networkStatus", "网络状态一般\n打败了全国" + vo.getNetworkStatus() + "的用户");
-		json.put("location", vo.getLocation());
-		json.put("testDate", vo.getTestDate());
+		// json.put("forecastScore", vo.getForecastScore());
+		// need网络状态判断标准
+		// json.put("networkStatus", "网络状态一般\n打败了全国" + vo.getNetworkStatus() +
+		// "的用户");
+		// json.put("location", vo.getLocation());
+		// json.put("testDate", vo.getTestDate());
+
+		// 在没有使用python预测时的模拟返回值
+		Random random = new Random();
+		Integer rand = random.nextInt(5) % (5) + 1;
+		Integer rand2 = random.nextInt(90) % (10) + 1;
+		json.put("forecastScore", rand.toString());// 预测分数
+		json.put("networkStatus", "网络状态一般\n打败了全国" + rand2.toString() + "%的用户");// 网络状态
+		json.put("location", "江苏南通崇川区工农路6号");// 地理位置
+		SimpleDateFormat dd = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+		json.put("testDate", dd.format(new Date()));// 测试时间
 		return json;
 	}
 }

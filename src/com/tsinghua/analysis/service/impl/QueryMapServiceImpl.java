@@ -1,5 +1,6 @@
 package com.tsinghua.analysis.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,14 +50,27 @@ public class QueryMapServiceImpl implements IQueryMapService {
 			logger.error(e.getMessage());
 			return ResultJson.error(null);
 		}
+		List<String> gpslist = new ArrayList<String>();
 		for (DataAnalysis data : list) {
-			/*if(end-start <= 200){
-				address = avg_gps;
-			}else{
-				jsonreturn alladdress;
-			}*/
+			gpslist.add(formatGps(data.getGpsLongitudeOne(),data.getGpsLatitudeOne()));
 		}
+		resultJson.put("gpslist", gpslist);
 		return ResultJson.success(resultJson);
+	}
+	
+	public String formatGps(String longitude, String Latitude){
+		JSONObject json = new JSONObject();
+		if(longitude != null && !longitude.isEmpty()){
+			json.put("longitude", longitude);
+		}else{
+			json.put("longitude", "");
+		}
+		if(Latitude != null && !Latitude.isEmpty()){
+			json.put("Latitude", Latitude);
+		}else{
+			json.put("Latitude", "");
+		}
+		return json.toString();
 	}
 
 }
