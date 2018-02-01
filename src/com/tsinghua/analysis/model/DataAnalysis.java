@@ -294,6 +294,9 @@ public class DataAnalysis {
 	/*网络状态评价*/
 	private String networkStatus;
 
+	/*统计同一个GPS的个数(地图展示)*/
+	private String countGPS;
+	
 	public String getDaId() {
 		return daId;
 	}
@@ -1052,6 +1055,14 @@ public class DataAnalysis {
 
 	public void setNetworkStatus(String networkStatus) {
 		this.networkStatus = networkStatus;
+	}
+
+	public String getCountGPS() {
+		return countGPS;
+	}
+
+	public void setCountGPS(String countGPS) {
+		this.countGPS = countGPS;
 	}
 	
 }

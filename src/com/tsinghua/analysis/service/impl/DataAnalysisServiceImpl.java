@@ -43,6 +43,7 @@ public class DataAnalysisServiceImpl implements IDataAnalysisService {
 			String uuid = UUID.randomUUID().toString();
 			analysisModel.setDaId(uuid);// 设置数据id
 			analysisModel.setDisplay("1");// 设置为展示
+			analysisModel.setForecastScore("3");//模拟存储预测分数
 			iDataAnalysisDao.insert(analysisModel);
 			// 测试阶段生成随机数
 			Random random = new Random();

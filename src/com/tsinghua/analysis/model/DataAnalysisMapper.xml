@@ -158,6 +158,8 @@
 			jdbcType="VARCHAR" />
 		<result column="NETWORKSTATUS" property="networkStatus"
 			jdbcType="VARCHAR" />
+		<result column="count(GPS_LONGITUDE_ONE)" property="countGPS"
+			jdbcType="DECIMAL" />
 	</resultMap>
 
 	<insert id="insert" parameterType="com.tsinghua.analysis.model.DataAnalysis">
@@ -1211,9 +1213,26 @@
 	</select>
 	<select id="selectRecord" parameterType="java.lang.String"
 		resultMap="BaseResultMap">
-		select DA_ID,STARTTIME,FORECASTSCORE,GPS_LONGITUDE_ONE,GPS_LATITUDE_ONE from DATAANALYSIS where DISPLAY =
+		select
+		DA_ID,STARTTIME,FORECASTSCORE,GPS_LONGITUDE_ONE,GPS_LATITUDE_ONE from
+		DATAANALYSIS where DISPLAY =
 		'1' and
 		<if test="udid != null">UDID = #{udid,jdbcType=VARCHAR}</if>
 		<if test="imsi != null">IMSI = #{imsi,jdbcType=VARCHAR}</if>
+	</select>
+	<select id="selectMap" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select GPS_LONGITUDE_ONE,GPS_LATITUDE_ONE,count(GPS_LONGITUDE_ONE)
+		from DATAANALYSIS where DISPLAY = '1' and
+		<if test="udid != null">UDID = #{udid,jdbcType=VARCHAR}</if>
+		<if test="imsi != null">IMSI = #{imsi,jdbcType=VARCHAR}</if>
+		group by GPS_LONGITUDE_ONE,GPS_LATITUDE_ONE
+	</select>
+	<select id="selectAddressByGPS" parameterType="java.lang.String"
+		resultType="java.lang.String">
+		select ADDRESS from DATAANALYSIS where GPS_LONGITUDE_ONE =
+		#{gpsLongitudeOne,jdbcType=VARCHAR} and GPS_LATITUDE_ONE =
+		#{gpsLatitudeOne,jdbcType=VARCHAR} and ROWNUM = 1 group by address
+		Order By Count(address) desc
 	</select>
 </mapper>

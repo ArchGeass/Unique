@@ -40,10 +40,12 @@ public class QueryMapServiceImpl implements IQueryMapService {
 		try {
 			if (vo.getSign().equals("1")) {
 				map.put("udid", vo.getSole());
-				list = iDataAnalysisDao.selectRecord(map);
+//				list = iDataAnalysisDao.selectRecord(map);
+				list = iDataAnalysisDao.selectMap(map);
 			} else {
 				map.put("imsi", vo.getSole());
-				list = iDataAnalysisDao.selectRecord(map);
+//				list = iDataAnalysisDao.selectRecord(map);
+				list = iDataAnalysisDao.selectMap(map);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -51,14 +53,18 @@ public class QueryMapServiceImpl implements IQueryMapService {
 			return ResultJson.error(null);
 		}
 		List<String> gpslist = new ArrayList<String>();
+		Map<String, Object> gpsmap = new HashMap<String, Object>();
 		for (DataAnalysis data : list) {
-			gpslist.add(formatGps(data.getGpsLongitudeOne(),data.getGpsLatitudeOne()));
+			gpsmap.put("gpsLongitudeOne", data.getGpsLongitudeOne());
+			gpsmap.put("gpsLatitudeOne", data.getGpsLatitudeOne());
+			String address = iDataAnalysisDao.selectAddressByGPS(gpsmap);
+			gpslist.add(formatGps(data.getGpsLongitudeOne(),data.getGpsLatitudeOne(),address,data.getCountGPS()));
 		}
 		resultJson.put("gpslist", gpslist);
 		return ResultJson.success(resultJson);
 	}
 	
-	public String formatGps(String longitude, String Latitude){
+	public String formatGps(String longitude, String Latitude, String address, String count){
 		JSONObject json = new JSONObject();
 		if(longitude != null && !longitude.isEmpty()){
 			json.put("longitude", longitude);
@@ -69,6 +75,16 @@ public class QueryMapServiceImpl implements IQueryMapService {
 			json.put("Latitude", Latitude);
 		}else{
 			json.put("Latitude", "");
+		}
+		if(address != null && !address.isEmpty()){
+			json.put("address", address);
+		}else{
+			json.put("address", "");
+		}
+		if(count != null && !count.isEmpty()){
+			json.put("count", count + "次");
+		}else{
+			json.put("count", "0次");
 		}
 		return json.toString();
 	}

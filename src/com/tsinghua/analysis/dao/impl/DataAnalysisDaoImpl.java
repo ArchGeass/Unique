@@ -11,7 +11,7 @@ import com.tsinghua.analysis.dao.IDataAnalysisDao;
 import com.tsinghua.analysis.model.DataAnalysis;
 
 @Repository
-public class DataAnalysisDaoImpl implements IDataAnalysisDao{
+public class DataAnalysisDaoImpl implements IDataAnalysisDao {
 
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
@@ -39,5 +39,15 @@ public class DataAnalysisDaoImpl implements IDataAnalysisDao{
 	@Override
 	public List<DataAnalysis> selectRecord(Map<String, Object> map) {
 		return sqlSessionTemplate.getMapper(IDataAnalysisDao.class).selectRecord(map);
+	}
+
+	@Override
+	public List<DataAnalysis> selectMap(Map<String, Object> map) {
+		return sqlSessionTemplate.getMapper(IDataAnalysisDao.class).selectMap(map);
+	}
+
+	@Override
+	public String selectAddressByGPS(Map<String, Object> map) {
+		return sqlSessionTemplate.getMapper(IDataAnalysisDao.class).selectAddressByGPS(map);
 	}
 }

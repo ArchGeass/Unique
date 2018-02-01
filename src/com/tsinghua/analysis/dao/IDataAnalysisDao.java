@@ -17,4 +17,10 @@ public interface IDataAnalysisDao {
 	
 	/*查询个体测试记录*/
 	List<DataAnalysis> selectRecord(Map<String, Object> map);
+
+	/*统计展示GPS信息for_map*/
+	List<DataAnalysis> selectMap(Map<String, Object> map);
+
+	/*根据gps查询address*/
+	String selectAddressByGPS(Map<String, Object> map);
 }

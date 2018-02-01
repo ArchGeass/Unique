@@ -56,7 +56,7 @@ public class QueryDetailServiceImpl implements IQueryDetailService{
 		List<String> list = new ArrayList<String>();
 		// 分类1
 		list.add(detail.toString("视频服务满意度", "", 1));
-		list.add(detail.toString("综合评分EvMos", vo.getEvMos(), 2));// 1-1
+		list.add(detail.toString("综合评分", vo.getEvMos(), 2));// 1-1
 		list.add(detail.toString("清晰度评分", vo.getUserScore(), 2));// 1-2
 		list.add(detail.toString("等待时间评分", vo.getEloading(), 2));// 1-3
 		list.add(detail.toString("流畅度评分", vo.getEstalling(), 2));// 1-4
@@ -66,7 +66,6 @@ public class QueryDetailServiceImpl implements IQueryDetailService{
 		list.add(detail.toString("请求服务器时延(ms)", vo.getUserBufferTime(), 2));// 2-3
 		list.add(detail.toString("卡顿时长占比", vo.getKaDurationProportion(), 2));// 2-4
 		list.add(detail.toString("视频码率", vo.getVideoBitrate(), 2));// 2-5
-		list.add(detail.toString("测试场景", vo.getUserScene(), 2));// 2-7
 		// 分类3
 		list.add(detail.toString("视频体验详细指标", "", 1));
 		list.add(detail.toString("视频缓冲峰值速率(kbps)", vo.getVideoPeakRate(), 2));// 3-2
@@ -79,7 +78,6 @@ public class QueryDetailServiceImpl implements IQueryDetailService{
 		list.add(detail.toString("所有卡顿总时延(ms)", vo.getVideoKaTotalTime(), 2));// 3-9
 		list.add(detail.toString("视频播放总时长", vo.getVideoPlayTotalTime(), 2));// 3-10
 		list.add(detail.toString("视频服务器RTT(Ping Server 512B)(ms)", vo.getPingAvgRtt(), 2));// 3-11
-		list.add(detail.toString("视频源服务器的实际地理位置", vo.getVideoServerLocation(), 2));// 3-12
 		// 分类4
 		list.add(detail.toString("其它服务信息", "", 1));
 		list.add(detail.toString("小区标识", vo.getCid(), 2));
@@ -89,7 +87,7 @@ public class QueryDetailServiceImpl implements IQueryDetailService{
 		list.add(detail.toString("Cell id", vo.getLcid(), 2));
 		list.add(detail.toString("IMSI", vo.getImsi(), 2));
 		list.add(detail.toString("UDID", vo.getUdid(), 2));
-		list.add(detail.toString("视频编码格式", vo.getVideoCodingFormat(), 2));
+		list.add(detail.toString("视频编码格式", formatVideoCoding(vo.getVideoCodingFormat()), 2));
 		list.add(detail.toString("视频清晰度", vo.getVideoClarity(), 2));// 4
 		list.add(detail.toString("信号强度", vo.getSignalStrength(), 2));// 4-2
 		resultJson.put("resultJson", list);
@@ -200,4 +198,14 @@ public class QueryDetailServiceImpl implements IQueryDetailService{
 		return temp;
 	}
 
+	/*规范化视频编码格式*/
+	public String formatVideoCoding(String videoCodingFormat){
+		if(videoCodingFormat.equals("1")){
+			return "H264";
+		}else if(videoCodingFormat.equals("2")){
+			return "MPEG-4";
+		}else{
+			return "其它";
+		}
+	}
 }
