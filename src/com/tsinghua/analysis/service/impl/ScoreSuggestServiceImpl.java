@@ -31,6 +31,11 @@ public class ScoreSuggestServiceImpl implements IScoreSuggestService{
 		ScoreSuggestVO vo = new ScoreSuggestVO(JSONArray.fromObject(param).getString(0));
 		DataAnalysis analysisModel = vo.updateSuggest(vo);
 		try {
+			//需要增加已有分数的判断,没有分数才可以进行提交
+			DataAnalysis scoreFlag = iDataAnalysisDao.selectByPrimaryKey(vo.getDaId());
+			if(scoreFlag.getScoreSuggest() != null && !scoreFlag.getScoreSuggest().isEmpty()){
+				return ResultJson.success(null);//已有分数时不进行数据覆盖
+			}
 			iDataAnalysisDao.updateByPrimaryKeySelective(analysisModel);
 		} catch (Exception e) {
 			e.printStackTrace();

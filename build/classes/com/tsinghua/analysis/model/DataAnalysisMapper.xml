@@ -1219,6 +1219,7 @@
 		'1' and
 		<if test="udid != null">UDID = #{udid,jdbcType=VARCHAR}</if>
 		<if test="imsi != null">IMSI = #{imsi,jdbcType=VARCHAR}</if>
+		order by SAVEDATE desc
 	</select>
 	<select id="selectMap" parameterType="java.lang.String"
 		resultMap="BaseResultMap">
