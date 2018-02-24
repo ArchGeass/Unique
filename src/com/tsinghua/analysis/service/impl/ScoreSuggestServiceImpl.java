@@ -15,7 +15,6 @@ import com.tsinghua.vo.ScoreSuggestVO;
 
 import net.sf.json.JSONArray;
 
-
 @WebService(targetNamespace = "http://scoreSuggest.service.analysis.tsinghua.com/", name = "IScoreSuggestService", serviceName = "IScoreSuggestService")
 public class ScoreSuggestServiceImpl implements IScoreSuggestService{
 

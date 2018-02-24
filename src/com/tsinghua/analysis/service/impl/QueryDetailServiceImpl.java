@@ -17,6 +17,7 @@ import com.tsinghua.utils.DetailJson;
 import com.tsinghua.utils.ResultJson;
 import com.tsinghua.vo.AnalysisDetailVO;
 import com.tsinghua.vo.DataId;
+import com.tsinghua.vo.scoreFormat;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -56,7 +57,7 @@ public class QueryDetailServiceImpl implements IQueryDetailService{
 		List<String> list = new ArrayList<String>();
 		// 分类1
 		list.add(detail.toString("视频服务满意度", "", 1));
-		list.add(detail.toString("综合评分", vo.getEvMos(), 2));// 1-1
+		list.add(detail.toString("综合评分", scoreFormat.vMOSFormat(vo.getEvMos()), 2));// 1-1
 		list.add(detail.toString("清晰度评分", vo.getUserScore(), 2));// 1-2
 		list.add(detail.toString("等待时间评分", vo.getEloading(), 2));// 1-3
 		list.add(detail.toString("流畅度评分", vo.getEstalling(), 2));// 1-4

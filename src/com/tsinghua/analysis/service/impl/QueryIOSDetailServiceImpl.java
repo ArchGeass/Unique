@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.jws.WebMethod;
 import javax.jws.WebResult;
+import javax.jws.WebService;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,12 @@ import com.tsinghua.utils.DetailJson;
 import com.tsinghua.utils.ResultJson;
 import com.tsinghua.vo.AnalysisDetailVO;
 import com.tsinghua.vo.DataId;
+import com.tsinghua.vo.scoreFormat;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+@WebService(targetNamespace = "http://iosDetailService.service.analysis.tsinghua.com/", name = "IQueryIOSDetailService", serviceName = "IQueryIOSDetailService")
 public class QueryIOSDetailServiceImpl implements IQueryIOSDetailService {
 
 	private static Logger logger = Logger.getLogger(QueryDetailServiceImpl.class);
@@ -58,7 +61,7 @@ public class QueryIOSDetailServiceImpl implements IQueryIOSDetailService {
 		List<String> list3 = new ArrayList<String>();
 		List<String> list4 = new ArrayList<String>();
 		// 分类1
-		list1.add(detail.toString("综合评分", vo.getEvMos(), 2));// 1-1
+		list1.add(detail.toString("综合评分", scoreFormat.vMOSFormat(vo.getEvMos()), 2));// 1-1
 		list1.add(detail.toString("清晰度评分", vo.getUserScore(), 2));// 1-2
 		list1.add(detail.toString("等待时间评分", vo.getEloading(), 2));// 1-3
 		list1.add(detail.toString("流畅度评分", vo.getEstalling(), 2));// 1-4

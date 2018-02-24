@@ -87,7 +87,7 @@ public class ForecastVo {
 		// json.put("testDate", vo.getTestDate());
 
 		// 在没有使用python预测时的模拟返回值
-		Random random = new Random();
+		/*Random random = new Random();
 		Integer rand = random.nextInt(5) % (5) + 1;
 		Integer rand2 = random.nextInt(90) % (10) + 1;
 		json.put("forecastScore", rand.toString());// 预测分数
@@ -95,6 +95,17 @@ public class ForecastVo {
 		json.put("location", "江苏南通崇川区工农路6号");// 地理位置
 		SimpleDateFormat dd = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
 		json.put("testDate", dd.format(new Date()));// 测试时间
+*/
+		Random random = new Random();
+//		Integer rand = random.nextInt(5) % (5) + 1;
+		Integer rand2 = random.nextInt(90) % (10) + 1;
+		JSONObject resultJson = new JSONObject();
+		resultJson.put("uuid", uuid);// 数据id
+		resultJson.put("forecastScore", scoreFormat.vMOSFormat(vo.getForecastScore()));// 预测分数
+		resultJson.put("networkStatus", "网络状态一般\n打败了全国" + rand2.toString() + "%的用户");// 网络状态
+		resultJson.put("location", vo.getLocation());// 地理位置
+		SimpleDateFormat dd = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+		resultJson.put("testDate", dd.format(new Date()));// 测试时间
 		return json;
 	}
 }
