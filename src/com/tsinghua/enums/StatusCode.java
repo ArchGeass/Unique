@@ -6,7 +6,9 @@ public enum StatusCode {
 	SUCCESS_CODE("200"),
 	FAIL_CODE("201"),
 	SUCCESS_MESSAGE("请求成功"),
-	FAIL_MESSAGE("请求失败")
+	FAIL_MESSAGE("请求失败"),
+//	PYTHON_FILE_PATH("D:\\unique_txt\\QoE\\Qoe\\Test.py")//windows_local
+	PYTHON_FILE_PATH("/root/QoE/Test.py")//linux_12.16
 	;
 	
 	private String message;
